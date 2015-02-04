@@ -3,6 +3,9 @@ from state import *
 from astar_search import *
 from parameters import pattern
 from parameters import pieces
+from piece import *
+
+print pattern
 
 class Tangram(State):
     def __init__(self,_pattern,_pieces):

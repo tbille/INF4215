@@ -34,13 +34,13 @@ class Piece():
     bRes      = True
 
     while (bRes and (iTop < iHauteur)) :
-      while (bRes and (iLeft < iLongueur)) :
+      while (bRes and (iLeft < iRight)) :
         if self.piece[iTop][iLeft]==self.piece[iTop][iRight] :
           iLeft += 1
-          iRight -= -1
+          iRight -= 1
         else:
           bRes = False
-      iTop -= 1
+      iTop += 1
       iLeft = 0
       iRight= iLongueur-1
 
