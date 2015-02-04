@@ -2,27 +2,30 @@
 class Piece():
   def __init__(self, _piece):
     self.piece = _piece
-    if tournable(piece){
-
-    }
 
 
-  def isSymetrieHorizontale():f
 
-    longueur = len(self.piece)
+  def isSymetrieHorizontale():
+    hauteur = len(self.piece)
     i=0
 
     res=true
-    while(vrai && i!=longueur){
-      if piece[i]==piece[longueur]
-        i+1
-        longueur-1
-      else
-        res=false
-    }
+    while res and i<hauteur :
+
+      j=0
+      while res and j<len(piece[i]):
+        if not(piece[i][j] == piece[i][j]) :
+          res=false
+        j+=1
+        pass
+      i+=1
+      hauteur=hauteur-1
+
+    print res
 
     return res
     pass
+
 
   def isSymetrieVerticale():
     hauteur = len(self.piece)
@@ -42,4 +45,3 @@ class Piece():
 
   def tournerPiece():
     pass
-
