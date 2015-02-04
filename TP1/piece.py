@@ -57,8 +57,16 @@ class Piece():
     print bRes
     return bRes
 
-  def genererListeRotation():
+  def genererListeRotation(self):
+
+    if not(self.isSymetrieVerticale()) :
+      self.piece.
+      
+    if not(self.isSymetrieHorizontale) :
+      self.piece.append(self.tournerPiece(self.piece[0]))
 
 
+    
 
-    pass
+  def tournerPiece(self, maPiece) :
+    return zip(*maPiece[::-1])
