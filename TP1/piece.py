@@ -1,10 +1,15 @@
 
 class Piece():
-  def __init__(self, _piece):
-    self.piece = _piece
+  def __init__(self, _piece, _id):
+    self.piece=[_piece]
+    self.id=_id
 
-
-
+  #
+  # isSymetrieHorizontale
+  # Permet de vérifier si la pièce a une symétrie Horizontale
+  #   return  True si symétrie
+  #           False sinon
+  #
   def isSymetrieHorizontale(self):
     hauteur = len(self.piece)-1
     i=0
@@ -13,7 +18,7 @@ class Piece():
     while res and i<hauteur :
       j=0
       while res and j<len(self.piece[i]):
-        if not(self.piece[i][j] == self.piece[i][j]) :
+        if not(self.piece[i][j] == self.piece[hauteur][j]) :
           res=False
         j+=1
       i+=1
@@ -22,7 +27,12 @@ class Piece():
     print res
     return res
 
-
+  #
+  # isSymetrieVerticale
+  # Permet de vérifier si la pièce a une symétrie Verticale
+  #   return  True si symétrie
+  #           False sinon
+  #
   def isSymetrieVerticale(self):
 
     iLongueur = len(self.piece[0])
@@ -47,5 +57,8 @@ class Piece():
     print bRes
     return bRes
 
-  def tournerPiece():
+  def genererListeRotation():
+
+
+
     pass

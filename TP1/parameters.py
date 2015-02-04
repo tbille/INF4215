@@ -39,9 +39,8 @@ pieces = [	[	['*',' ',' '],
 
 			[	['*']	]			]
 
-#solution = Tangram(pattern,pieces)
+solution = Tangram(pattern,pieces)
 
-maPiece = Piece(pieces[2])
+ 
 
-maPiece.isSymetrieHorizontale()
-maPiece.isSymetrieVerticale()
+print solution
