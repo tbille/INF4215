@@ -6,25 +6,21 @@ class Piece():
 
 
   def isSymetrieHorizontale():
-    hauteur = len(self.piece)
+    hauteur = len(self.piece)-1
     i=0
-
     res=true
-    while res and i<hauteur :
 
+    while res and i<hauteur :
       j=0
       while res and j<len(piece[i]):
         if not(piece[i][j] == piece[i][j]) :
           res=false
         j+=1
-        pass
       i+=1
       hauteur=hauteur-1
 
     print res
-
     return res
-    pass
 
 
   def isSymetrieVerticale():
