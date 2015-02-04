@@ -10,9 +10,18 @@ class Piece():
   def isSymetrieHorizontale():f
 
     longueur = len(self.piece)
+    i=0
 
-    
+    res=true
+    while(vrai && i!=longueur){
+      if piece[i]==piece[longueur]
+        i+1
+        longueur-1
+      else
+        res=false
+    }
 
+    return res
     pass
 
   def isSymetrieVerticale():
