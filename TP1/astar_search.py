@@ -7,8 +7,8 @@ def astar_search(initialState):
     while frontier:
         node = frontier.pop()
         step += 1
-        # node.state.show()
-        # print '----------------'
+        node.state.show()
+        print '----------------'
         if node.state.isGoal():
             node.state.show()
             print 'Cost:', node.g

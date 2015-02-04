@@ -1,8 +1,8 @@
 from node import *
 from state import *
-from breadthfirst_search import *
-from depthfirst_search import *
-from bestfirst_search import *
+#from breadthfirst_search import *
+#from depthfirst_search import *
+#from bestfirst_search import *
 from astar_search import *
 
 
