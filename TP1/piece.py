@@ -24,14 +24,28 @@ class Piece():
 
 
   def isSymetrieVerticale():
-    hauteur = len(self.piece)
-    i=0
 
-    res=true
-    while(vrai && i!=hauteur){
-      if piece[i]==piece[hauteur]
-        i+1
-        hauteur-1
+    iLongueur = len(self.piece[0])
+    iHauteur  = len(self.piece)
+    iLeft     = 0
+    iRight    = iLongueur
+    iTop      = 0
+    iBottom   = iHauteur
+    
+    bRes      = true
+
+    while (bRes and (iTop not iHauteur)) :
+      while (bRes and (iLeft not iLongueur)) :
+        if piece[iTop][iRight]==piece[iHauteur]
+        i += 1
+        iHauteur -= -1
+      else
+        res=false
+
+        
+      if piece[i]==piece[iHauteur]
+        i += 1
+        iHauteur-1
       else
         res=false
     }
