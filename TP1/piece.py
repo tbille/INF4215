@@ -25,7 +25,19 @@ class Piece():
     pass
 
   def isSymetrieVerticale():
+    hauteur = len(self.piece)
+    i=0
 
+    res=true
+    while(vrai && i!=hauteur){
+      if piece[i]==piece[hauteur]
+        i+1
+        hauteur-1
+      else
+        res=false
+    }
+
+    return r
     pass
 
   def tournerPiece():
