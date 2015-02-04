@@ -32,30 +32,23 @@ class Piece():
     iLongueur = len(self.piece[0])
     iHauteur  = len(self.piece)
     iLeft     = 0
-    iRight    = iLongueur
+    iRight    = iLongueur-1
     iTop      = 0
-    iBottom   = iHauteur
     
     bRes      = true
 
-    while (bRes and (iTop not iHauteur)) :
-      while (bRes and (iLeft not iLongueur)) :
-        if piece[iTop][iRight]==piece[iHauteur]
-        i += 1
-        iHauteur -= -1
-      else
-        res=false
+    while (bRes and (iTop < iHauteur)) :
+      while (bRes and (iLeft < iLongueur)) :
+        if piece[iTop][iLeft]==piece[iTop][iRight] :
+          iLeft += 1
+          iRight -= -1
+        else:
+          bRes = false
+      iTop -= 1
+      iLeft = 0
+      iRight= iLongueur-1
 
-        
-      if piece[i]==piece[iHauteur]
-        i += 1
-        iHauteur-1
-      else
-        res=false
-    }
-
-    return r
-    pass
+    return bRes
 
   def tournerPiece():
     pass
