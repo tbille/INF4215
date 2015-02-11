@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 #from piece import *
+from tangram import *
 
 pattern =	[	[' ',' ',' ',' ','*','*',' ',' ',' ',' '],
 				[' ',' ',' ',' ','*','*',' ',' ',' ',' '],
@@ -39,15 +40,15 @@ pieces = [	[	['*',' ',' '],
 
 			[	['*']	]			]
 
-#solution = Tangram(pattern,pieces)
-solution = zip(*[	['*',' '],['*','*'],['*','*']	][::-1])
+solution = Tangram(pattern,pieces)
+#solution = zip(*[	['*',' '],['*','*'],['*','*']	][::-1])
 
-print solution
+#print solution
 #[('*', '*')]
 
 #[["*"],["*"]]
 #[('*',), ('*',)]
 
 
-[('*', '*', '*'), 
-(' ', '*', '*')]
+#[('*', '*', '*'), 
+#(' ', '*', '*')]

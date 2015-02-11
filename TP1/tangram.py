@@ -1,17 +1,21 @@
 from node import *
 from state import *
 from astar_search import *
-from parameters import pattern
-from parameters import pieces
 from piece import *
 
-print pattern
+import sys
+import math
+import copy
 
 class Tangram(State):
     def __init__(self,_pattern,_pieces):
         self.pattern = _pattern
-        self.pieces = _pieces
+        #self.pieces = _pieces
         self.counter = 0
+        self.pieces=map(lambda s: Piece(s), _pieces )
+        
+        map(lambda s: s.show(), self.pieces )
+
 
     # Checks whether current state and the one passed as parameter are exactly the same
     def equals(self,state):
