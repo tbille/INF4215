@@ -40,15 +40,7 @@ pieces = [	[	['*',' ',' '],
 
 			[	['*']	]			]
 
-solution = Tangram(pattern,pieces)
-#solution = zip(*[	['*',' '],['*','*'],['*','*']	][::-1])
+#solution = Tangram(pattern,pieces)
+solution = astar_search(Tangram(pattern,pieces))
+#solution.show()
 
-#print solution
-#[('*', '*')]
-
-#[["*"],["*"]]
-#[('*',), ('*',)]
-
-
-#[('*', '*', '*'), 
-#(' ', '*', '*')]

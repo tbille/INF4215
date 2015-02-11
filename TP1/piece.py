@@ -3,10 +3,21 @@
 class Piece():
   counter=0
   def __init__(self, _piece):
-    self.piece=[_piece]
+    
     Piece.counter+=1
     self.id=Piece.counter
+    _piece = map(lambda s : self.replaceStar(s) , _piece)
+
+    self.piece=[_piece]
     self.genererListeRotation()
+    self.placed = False
+
+  def replaceStar(self, l):
+    for i in xrange(0,len(l)):
+      if(l[i]=='*'):
+        l[i]=str(self.id)
+
+    return l
 
   def show(self):
     print self.id
@@ -78,10 +89,6 @@ class Piece():
       del self.piece[2]
       if b :
         del self.piece[1]
-
-
-    
-
 
   def tournerPiece(self, maPiece) :
     return zip(*maPiece[::-1])
