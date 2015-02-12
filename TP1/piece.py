@@ -3,13 +3,25 @@
 class Piece():
   counter=0
   def __init__(self, _piece):
+
+    print "Creating piece"
     
     Piece.counter+=1
     self.id=Piece.counter
     _piece = map(lambda s : self.replaceStar(s) , _piece)
 
     self.piece=[_piece]
+
+    print "piece ="
+    print self.piece
+
+    print "generating rotation"
     self.genererListeRotation()
+
+    print "piece ="
+    print self.piece
+    print "finish"
+
     self.placed = False
 
   def replaceStar(self, l):
