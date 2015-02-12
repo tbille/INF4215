@@ -42,5 +42,4 @@ pieces = [	[	['*',' ',' '],
 
 #solution = Tangram(pattern,pieces)
 solution = astar_search(Tangram(pattern,pieces))
-solution.show()
 

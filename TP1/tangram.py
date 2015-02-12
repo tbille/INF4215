@@ -90,7 +90,7 @@ class Tangram(State):
         if( (len(self.grid[0]) >= _x+PdimX) and (len(self.grid) >= _y+PdimY) ) :
             for i in range(PdimY):
                 for j in range(PdimX):
-                    if ( (self.grid[_y+i][_x+j] == '*') and (_piece[i][j] == ' ')) :
+                    if ( (self.grid[_y+i][_x+j] == ' ') and (_piece[i][j] != ' ')) :
                         return False
             return True         
         else :
