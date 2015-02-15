@@ -7,20 +7,14 @@ class Piece():
     print "Creating piece"
     
     Piece.counter+=1
-    self.id=Piece.counter
+    self.id = Piece.counter
     _piece = map(lambda s : self.replaceStar(s) , _piece)
 
     self.piece=[_piece]
 
-    print "piece ="
-    print self.piece
+    self.cost = self.getCost(self.piece)
 
-    print "generating rotation"
     self.genererListeRotation()
-
-    print "piece ="
-    print self.piece
-    print "finish"
 
     self.placed = False
 
@@ -104,3 +98,23 @@ class Piece():
 
   def tournerPiece(self, maPiece) :
     return zip(*maPiece[::-1])
+
+  def getCost(self,piece) :
+    cost = 0
+    PdimX = len(piece[0][0])
+    PdimY = len(piece[0])
+    for i in range(PdimY):
+      for j in range(PdimX):
+        if (piece[0][i][j] != ' '):
+          cost += 1
+    return cost
+
+
+
+
+
+
+
+
+
+
