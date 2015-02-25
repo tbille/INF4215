@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
-#from piece import *
-from tangram import *
-
+from search import *
 pattern =	[	[' ',' ','*','*'],
 				[' ','*','*',' '],
 				[' ','*','*',' '],
 				['*','*','*','*']	]
 
-pieces = [	[	['*',' '],
+pieces = [	
+      [	['*',' '],
 				['*','*']	],
 
 			[	['*','*']	],
@@ -17,5 +16,4 @@ pieces = [	[	['*',' '],
 			[	['*',' '],
 				['*','*']	],  ]
 
-#solution = Tangram(pattern,pieces)
-solution = astar_search(Tangram(pattern,pieces))
+solution = search(pattern,pieces)

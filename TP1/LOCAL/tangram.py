@@ -1,6 +1,5 @@
 from node import *
 from state import *
-from astar_search import *
 from piece import *
 
 class Tangram(State):
@@ -11,7 +10,7 @@ class Tangram(State):
         self.pieces=map(lambda s: Piece(s), _pieces)
 
         self.maxCost = self.getMaxCost(self.pieces)
-        
+
         map(lambda s: s.show(), self.pieces )
 
 
