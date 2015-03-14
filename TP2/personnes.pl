@@ -60,5 +60,12 @@ personne(stephen_Harper, politicien,[masculin,])
 % sportif
 
 % auteur
+personne(victor_Hugo, auteur,[masculin,mort]).
+personne(j_K_Rowling, auteur,[feminin,vivant]).
 
 % religieu
+personne(pape_Francois, religieu,[masculin,vivant]).
+personne(moise, religieu,[masculin,marcher,mort]).
+personne(jesus, religieu,[masculin,separer,mort]).
+
+
