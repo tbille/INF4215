@@ -1,0 +1,64 @@
+personnes(Nom):-
+  metier(musicien),
+  genre(Genre),
+  style(Style),
+  vie(Vie),
+  findall(Noms,personne(Noms,musicien,ListeMusiciens),ListeMusiciens),
+  chercher(Nom,ListeMusiciens,[Genre,Style,Vie]).
+
+
+vie(mort).
+vie(vivant).
+
+genre(masculin).
+genre(feminin).
+
+style(classique).
+style(jazz).
+style(pop).
+
+jeuxVideo(lara_croft).
+jeuxVideo(mario).
+
+personnageFilms(blanche-neige).
+personnageFilms(james_Bond).
+
+tennis(rafal_Nadal).
+tennis(eugenie_Bouchard).
+
+eau(separer).
+eau(marcher).
+
+domaine(ia).
+domaine(logiciel_Libre).
+
+chercher(_,[],_):-fail.
+chercher(Nom,[Nom|_],LAttributs):-verifieAttributs(Nom,LAttributs),!.
+chercher(Nom,[_|Q],LAttributs):-chercher(Nom,Q,LAttributs).
+
+
+verifieAttributs(_,[]).
+verifieAttributs(Nom,[Attribut|Q]):-
+  personne(Nom,_,LAttributs),
+  member(Attribut,LAttributs),
+  verifieAttributs(Nom,Q).
+
+% musiciens
+personne(michael_Jackson,musicien,[masculin,pop,mort]).
+personne(wolfgang_Amadeus_Mozart,musicien,[masculin,classique,mort]).
+personne(john_Lewis,musicien,[masculin,jazz,mort]).
+
+% politiciens
+personne(stephen_Harper, politicien,[masculin,])
+
+% acteurs
+
+% professeur
+
+% fictif
+
+% sportif
+
+% auteur
+
+% religieu
