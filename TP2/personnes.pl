@@ -20,7 +20,7 @@ style(pop).
 jeuxVideo(lara_croft).
 jeuxVideo(mario).
 
-personnageFilms(blanche-neige).
+personnageFilms(blanche_neige).
 personnageFilms(james_Bond).
 
 tennis(rafal_Nadal).
@@ -49,11 +49,14 @@ personne(wolfgang_Amadeus_Mozart,musicien,[masculin,classique,mort]).
 personne(john_Lewis,musicien,[masculin,jazz,mort]).
 
 % politiciens
-personne(stephen_Harper, politicien,[masculin,])
 
 % acteurs
+personne(brad_Pitt, acteur,[masculin,vivant]).
+personne(julie_Snyder,acteur,[feminin,vivant]).
 
 % professeur
+personne(michel_Gagnon,professeur,[masculin,vivant,ia]).
+personne(michel_Dagenais,professeur,[masculin,vivant,logiciel_Libre]).
 
 % fictif
 
