@@ -25,8 +25,8 @@ ask(metier,Y):-
   Reponse = oui.
 
 personnes(X):-
-  ask(vivant),!,
   prop(X,vivant),
+  ask(vivant),!,
   genreQ(X).
 
 personnes(X):-
@@ -34,8 +34,8 @@ personnes(X):-
   genreQ(X).
 
 genreQ(X):-
-  ask(homme),
-  prop(X,masculin),!,
+  prop(X,masculin),
+  ask(homme),!,
   reelQ(X).
 
 genreQ(X):-
@@ -55,11 +55,9 @@ reelPerso(_).
 fictif(X):-
   source(Y),
   ask(source,Y),!,
-  
   metierQ(X).
 
 metierQ(X):-
-
   metier(Y),
   prop(X,Y),
   ask(metier,Y),!.
@@ -149,18 +147,22 @@ prop(lara_croft,fictif).
 prop(lara_croft,feminin).
 prop(lara_croft,jeuVideo).
 prop(lara_croft,aventurier).
+prop(lara_croft,vivant).
 prop(mario,fictif).
 prop(mario,masculin).
 prop(mario,jeuVideo).
 prop(mario,plombier).
+prop(mario,vivant).
 prop(garfield,chat).
 prop(garfield,fictif).
 prop(garfield,masculin).
 prop(garfield,bd).
+prop(garfield,vivant).
 prop(james_Bond,film).
 prop(james_Bond,fictif).
 prop(james_Bond,masculin).
 prop(james_Bond,espion).
+prop(james_Bond,vivant).
 prop(blanche_neige,feminin).
 prop(blanche_neige,fictif).
 prop(blanche_neige,film).
@@ -223,7 +225,7 @@ metier(aventurier).
 metier(plombier).
 metier(princesse).
 
-animal(chat).
+metier(chat).
 
 vie(mort).
 vie(vivant).
