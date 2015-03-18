@@ -42,6 +42,45 @@ personne(moise,[religieux,masculin,marcher,mort]).
 personne(jesus,[religieux,masculin,separer,mort]).
 
 
+prop(mario,fictif).
+prop(mario,masculin).
+prop(mario,jeuVideo).
+prop(garfield,chat).
+prop(garfield,fictif).
+prop(garfield,masculin).
+prop(james_Bond,film).
+prop(james_Bond,fictif).
+prop(james_Bond,masculin).
+prop(blanche_neige,feminin).
+prop(blanche_neige,fictif).
+prop(blanche_neige,film).
+prop(jacques_Villeneuve,f1).
+prop(jacques_Villeneuve,masculin).
+prop(jacques_Villeneuve,sportif).
+prop(rafael_Nadal,tennis).
+prop(rafael_Nadal,masculin).
+prop(rafael_Nadal,sportif).
+prop(eugenie_Bouchard,sportif).
+prop(eugenie_Bouchard,feminin).
+prop(eugenie_Bouchard,tennis).
+prop(victor_Hugo,auteur).
+prop(victor_Hugo,mort).
+prop(victor_Hugo,masculin).
+prop(j_K_Rowling, auteur).
+prop(j_K_Rowling,vivant).
+prop(j_K_Rowling,feminin).
+prop(pape_Francois, religieux).
+prop(pape_Francois,masculin).
+prop(pape_Francois,vivant).
+prop(moise,religieux).
+prop(moise,masculin).
+prop(moise,marcher).
+prop(moise,mort).
+prop(jesus,religieux).
+prop(jesus,masculin).
+prop(jesus,separer).
+prop(jesus,mort).
+
 %-------------------------------------------
 %
 %   Attributs
