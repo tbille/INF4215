@@ -9,7 +9,7 @@ ask(homme,Y):-
   read(Reponse),
   Reponse = "oui".
 
-ask(reel,Y):-
+ask(fictif,Y):-
   format("Votre personnage est-il un personnage fictif ? ",[Y]),
   read(Reponse),
   Reponse = "oui".
@@ -25,32 +25,40 @@ ask(metier,Y):-
   Reponse = "oui".
 
 personnes(X):-
-  ask(vivant,envie),!,
-  prop(X,vivant),
+  ask(vivant,envie),
+  prop(X,vivant),!,
   genreQ(X).
+  
 personnes(X):-
   prop(X,mort),
   genreQ(X).
 
 genreQ(X):-
-  ask(homme,masculin),!,
-  prop(X,masculin).
+  !,ask(homme,masculin),!,
+  prop(X,masculin),
+  reelQ(X).
 genreQ(X):-
-  prop(X,feminin).
+  prop(X,feminin),
+  reelQ(X).
 
 reelQ(X):-
-  ask(fictif,fictif),!,
   prop(X,fictif),
-  fictif(X).
+  ask(fictif,fictif),!,
+  fictif(X),!.
 
 reelQ(X):-
   prop(X,reel),
   reelPerso(X).
 
+
+
+
+
+
 fictif(X):-
   source(Y),
-  ask(source,Y),!,
   prop(X,Y),
+  ask(source,Y),!,
   metierQ(X).
 
 metierQ(X):-
