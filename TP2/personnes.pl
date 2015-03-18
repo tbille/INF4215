@@ -85,8 +85,6 @@ prop(lara_croft,fictif).
 prop(lara_croft,feminin).
 prop(lara_croft,jeuVideo).
 prop(lara_croft,aventurier).
-
-
 prop(mario,fictif).
 prop(mario,masculin).
 prop(mario,jeuVideo).
@@ -99,6 +97,7 @@ prop(james_Bond,masculin).
 prop(blanche_neige,feminin).
 prop(blanche_neige,fictif).
 prop(blanche_neige,film).
+prop(blanche_neige,princesse).
 prop(jacques_Villeneuve,f1).
 prop(jacques_Villeneuve,masculin).
 prop(jacques_Villeneuve,sportif).
@@ -114,6 +113,7 @@ prop(victor_Hugo,masculin).
 prop(j_K_Rowling, auteur).
 prop(j_K_Rowling,vivant).
 prop(j_K_Rowling,feminin).
+prop(j_K_Rowling,harry_Potter).
 prop(pape_Francois, religieux).
 prop(pape_Francois,masculin).
 prop(pape_Francois,vivant).
@@ -132,6 +132,8 @@ prop(jesus,mort).
 %
 %-------------------------------------------
 
+livre(harry_Potter).
+livre(les_Miserables).
 
 metier(religieux).
 metier(auteur).
