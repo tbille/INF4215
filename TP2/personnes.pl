@@ -1,16 +1,20 @@
 
-ask(vivant,Y):-
-  format("Votre personnage est-il vivant ?",[Y]),
+ask(vivant):-
+  format("Votre personnage est-il vivant ?"),
+  read(Reponse),
+<<<<<<< HEAD
+=======
+  format(Reponse),
+>>>>>>> a291a2c523fae2f9aefcff9678aae2b6a1e12243
+  Reponse = oui.
+
+ask(homme):-
+  format("Votre personnage est-il un personnage masculin ?"),
   read(Reponse),
   Reponse = oui.
 
-ask(homme,Y):-
-  format("Votre personnage est-il un personnage masculin ?",[Y]),
-  read(Reponse),
-  Reponse = oui.
-
-ask(fictif,Y):-
-  format("Votre personnage est-il un personnage fictif ? ",[Y]),
+ask(fictif):-
+  format("Votre personnage est-il un personnage fictif ? "),
   read(Reponse),
   Reponse = oui.
 
@@ -25,16 +29,20 @@ ask(metier,Y):-
   Reponse = oui.
 
 personnes(X):-
-  ask(vivant,envie),
-  prop(X,vivant),!,
+  ask(vivant),
+  prop(X,vivant),
   genreQ(X).
 
 personnes(X):-
-  prop(X,mort),
+  prop(X,mort),!,
   genreQ(X).
 
 genreQ(X):-
+<<<<<<< HEAD
   ask(homme,masculin),!,
+=======
+  ask(homme),!,
+>>>>>>> a291a2c523fae2f9aefcff9678aae2b6a1e12243
   prop(X,masculin),
   
   reelQ(X).
@@ -43,19 +51,15 @@ genreQ(X):-
   reelQ(X).
 
 reelQ(X):-
+  ask(fictif),!,
   prop(X,fictif),
-  ask(fictif,fictif),!,
-  fictif(X),!.
+  fictif(X).
 
 reelQ(X):-
   prop(X,reel),
   reelPerso(X).
 
-
-
-
 reelPerso(_).
-
 fictif(X):-
   source(Y),
   prop(X,Y),
