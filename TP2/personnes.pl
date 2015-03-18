@@ -14,6 +14,16 @@ ask(reel,Y):-
   read(Reponse),
   Reponse = "oui".
 
+ask(source,Y):-
+  format("Votre personnage provient-il d'un(e) ~w",[Y]),
+  read(Reponse),
+  Reponse = "oui".
+
+ask(metier,Y):-
+  format("Votre personnage est-il un(e) ~w",[Y]),
+  read(Reponse),
+  Reponse = "oui".
+
 personnes(X):-
   ask(vivant,envie),!,
   prop(X,vivant),
