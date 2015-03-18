@@ -8,17 +8,37 @@ personnes(X):-
   ask(vivant,envie),!,
   prop(X,vivant),
   genreQ(X).
-
 personnes(X):-
   prop(X,mort),
   genreQ(X).
-
 
 genreQ(X):-
   ask(homme,masculin),!,
   prop(X,masculin).
 genreQ(X):-
   prop(X,feminin).
+
+reelQ(X):-
+  ask(fictif,fictif),!,
+  prop(X,fictif),
+  fictif(X).
+
+reelQ(X):-
+  prop(X,reel),
+  reelPerso(X).
+
+fictif(X):-
+  source(Y),
+  ask(source,Y),!,
+  prop(X,Y),
+  metierQ(X).
+
+metierQ(X):-
+  metier(Y),
+  prop(X,Y),
+  ask(metier,Y),!.
+
+
 
 
 %-------------------------------------------
@@ -101,6 +121,7 @@ prop(mario,plombier).
 prop(garfield,chat).
 prop(garfield,fictif).
 prop(garfield,masculin).
+prop(garfield,bd).
 prop(james_Bond,film).
 prop(james_Bond,fictif).
 prop(james_Bond,masculin).
@@ -153,6 +174,7 @@ metier(sportif).
 metier(professeur).
 metier(acteur).
 metier(musicien).
+
 metier(espion).
 metier(aventurier).
 metier(plombier).
@@ -172,6 +194,7 @@ style(pop).
 
 source(jeuVideo).
 source(film).
+source(bd).
 
 sport(tennis).
 sport(f1).
