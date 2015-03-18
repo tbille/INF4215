@@ -219,12 +219,10 @@ metier(sportif).
 metier(professeur).
 metier(acteur).
 metier(musicien).
-
 metier(espion).
 metier(aventurier).
 metier(plombier).
 metier(princesse).
-
 metier(chat).
 
 vie(mort).
