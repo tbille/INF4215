@@ -85,17 +85,17 @@ prop(lara_croft,fictif).
 prop(lara_croft,feminin).
 prop(lara_croft,jeuVideo).
 prop(lara_croft,aventurier).
-
-
 prop(mario,fictif).
 prop(mario,masculin).
 prop(mario,jeuVideo).
+prop(mario,plombier).
 prop(garfield,chat).
 prop(garfield,fictif).
 prop(garfield,masculin).
 prop(james_Bond,film).
 prop(james_Bond,fictif).
 prop(james_Bond,masculin).
+prop(james_Bond,espion).
 prop(blanche_neige,feminin).
 prop(blanche_neige,fictif).
 prop(blanche_neige,film).
@@ -111,6 +111,7 @@ prop(eugenie_Bouchard,tennis).
 prop(victor_Hugo,auteur).
 prop(victor_Hugo,mort).
 prop(victor_Hugo,masculin).
+prop(victor_Hugo,les_Miserables).
 prop(j_K_Rowling, auteur).
 prop(j_K_Rowling,vivant).
 prop(j_K_Rowling,feminin).
@@ -142,6 +143,7 @@ metier(musicien).
 metier(espion).
 metier(aventurier).
 metier(plombier).
+metier(princesse).
 
 animal(chat).
 
