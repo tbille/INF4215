@@ -2,10 +2,6 @@
 ask(vivant):-
   format("Votre personnage est-il vivant ?"),
   read(Reponse),
-<<<<<<< HEAD
-=======
-  format(Reponse),
->>>>>>> a291a2c523fae2f9aefcff9678aae2b6a1e12243
   Reponse = oui.
 
 ask(homme):-
@@ -29,7 +25,7 @@ ask(metier,Y):-
   Reponse = oui.
 
 personnes(X):-
-  ask(vivant),
+  ask(vivant),!,
   prop(X,vivant),
   genreQ(X).
 
@@ -38,35 +34,32 @@ personnes(X):-
   genreQ(X).
 
 genreQ(X):-
-<<<<<<< HEAD
-  ask(homme,masculin),!,
-=======
-  ask(homme),!,
->>>>>>> a291a2c523fae2f9aefcff9678aae2b6a1e12243
-  prop(X,masculin),
-  
+  ask(homme),
+  prop(X,masculin),!,
   reelQ(X).
+
 genreQ(X):-
-  prop(X,feminin),
+  prop(X,feminin),!,
   reelQ(X).
 
 reelQ(X):-
   ask(fictif),!,
-  prop(X,fictif),
   fictif(X).
 
 reelQ(X):-
-  prop(X,reel),
+  prop(X,reel),!,
   reelPerso(X).
 
 reelPerso(_).
+
 fictif(X):-
   source(Y),
-  prop(X,Y),
   ask(source,Y),!,
+  
   metierQ(X).
 
 metierQ(X):-
+
   metier(Y),
   prop(X,Y),
   ask(metier,Y),!.
