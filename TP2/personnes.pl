@@ -5,7 +5,7 @@ ask(vivant):-
   Reponse = oui.
 
 ask(homme):-
-  format("Votre personnage est-il un personnage masculin ?"),
+  format("Votre personnage est-il un personnage masculin ? "),
   read(Reponse),
   Reponse = oui.
 
@@ -15,12 +15,12 @@ ask(fictif):-
   Reponse = oui.
 
 ask(source,Y):-
-  format("Votre personnage provient-il d'un(e) ~w",[Y]),
+  format("Votre personnage provient-il d'un(e) ~w ?",[Y]),
   read(Reponse),
   Reponse = oui.
 
 ask(metier,Y):-
-  format("Votre personnage est-il un(e) ~w",[Y]),
+  format("Votre personnage est-il un(e) ~w ?",[Y]),
   read(Reponse),
   Reponse = oui.
 
@@ -44,6 +44,7 @@ genreQ(X):-
 
 reelQ(X):-
   ask(fictif),!,
+  prop(X,fictif),
   fictif(X).
 
 reelQ(X):-
