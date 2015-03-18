@@ -5,7 +5,7 @@ ask(vivant):-
   Reponse = oui.
 
 ask(homme):-
-  format("Votre personnage est-il un personnage masculin ?"),
+  format("Votre personnage est-il un personnage masculin ? "),
   read(Reponse),
   Reponse = oui.
 
@@ -15,12 +15,12 @@ ask(fictif):-
   Reponse = oui.
 
 ask(source,Y):-
-  format("Votre personnage provient-il d'un(e) ~w",[Y]),
+  format("Votre personnage provient-il d'un(e) ~w ?",[Y]),
   read(Reponse),
   Reponse = oui.
 
 ask(metier,Y):-
-  format("Votre personnage est-il un(e) ~w",[Y]),
+  format("Votre personnage est-il un(e) ~w ?",[Y]),
   read(Reponse),
   Reponse = oui.
 
@@ -44,6 +44,9 @@ genreQ(X):-
 
 reelQ(X):-
   ask(fictif),!,
+  format("--fictif-- "),
+  prop(X,fictif),
+  format("--assigned-- "),
   fictif(X).
 
 reelQ(X):-
@@ -149,6 +152,7 @@ prop(lara_croft,fictif).
 prop(lara_croft,feminin).
 prop(lara_croft,jeuVideo).
 prop(lara_croft,aventurier).
+prop(lara_croft,vivant).
 prop(mario,fictif).
 prop(mario,masculin).
 prop(mario,jeuVideo).
