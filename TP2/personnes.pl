@@ -1,16 +1,25 @@
-chercher([],_,[]).
-chercher( [Nom|Q],LAttributs,[Nom|Res] ):-
-  verifieAttributs(Nom,LAttributs),!,
-  chercher(Q,LAttributs,Res).
 
-chercher([_|Q],LAttributs,LNoms):-chercher(Q,LAttributs,LNoms).
+ask(vivant,Y):-
+  format("Vivant ? ",[Y]),
+  read(Reponse),
+  Reponse = "oui".
+
+personnes(X):-
+  ask(vivant,envie),!,
+  prop(X,vivant),
+  genreQ(X).
+
+personnes(X):-
+  prop(X,mort),
+  genreQ(X).
 
 
-verifieAttributs(_,[]).
-verifieAttributs(Nom,[Attribut|Q]):-
-  personne(Nom,LAttributs),
-  member(Attribut,LAttributs),
-  verifieAttributs(Nom,Q).
+genreQ(X):-
+  ask(homme,masculin),!,
+  prop(X,masculin).
+genreQ(X):-
+  prop(X,feminin).
+
 
 %-------------------------------------------
 %
@@ -69,7 +78,7 @@ prop(cleopatre_VII,mort).
 prop(cleopatre_VII,egypte).
 prop(brad_Pitt,acteur).
 prop(brad_Pitt,masculin).
-prop(brad_Pitt,vivant]).
+prop(brad_Pitt,vivant).
 prop(julie_Snyder,acteur).
 prop(julie_Snyder,feminin).
 prop(julie_Snyder,vivant).
@@ -175,3 +184,10 @@ domaine(logiciel_Libre).
 
 gouverne(canada).
 gouverne(egypte_ancienne).
+
+
+verifieAttributs(_,[]).
+verifieAttributs(Nom,[Attribut|Q]):-
+  personne(Nom),
+  prop(Nom,Attribut),
+  verifieAttributs(Nom,Q).
