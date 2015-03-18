@@ -44,9 +44,7 @@ genreQ(X):-
 
 reelQ(X):-
   ask(fictif),!,
-  format("--fictif-- "),
   prop(X,fictif),
-  format("--assigned-- "),
   fictif(X).
 
 reelQ(X):-
