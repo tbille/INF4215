@@ -34,8 +34,8 @@ personnes(X):-
   genreQ(X).
 
 genreQ(X):-
-  prop(X,masculin),
   ask(homme),!,
+  prop(X,masculin),
   reelQ(X).
 
 genreQ(X):-
@@ -43,8 +43,11 @@ genreQ(X):-
   reelQ(X).
 
 reelQ(X):-
+  
   ask(fictif),!,
-  fictif(X).
+
+  fictif(X),
+  prop(X,fictif) .
 
 reelQ(X):-
   prop(X,reel),!,
@@ -54,15 +57,18 @@ reelPerso(_).
 
 fictif(X):-
   source(Y),
-  ask(source,Y),!,
+
+  ask(source,Y),
+  prop(X,Y),!,
+  format("test"),
   metierQ(X).
 
 metierQ(X):-
 format("a"),
-  prop(X,Y),
   metier(Y),
   format("b"),
-  ask(metier,Y),!.
+  ask(metier,Y),!,
+  prop(X,Y).
 
 
 
@@ -215,6 +221,7 @@ prop(jesus,mort).
 livre(harry_Potter).
 livre(les_Miserables).
 
+metier(chat).
 metier(religieux).
 metier(auteur).
 metier(sportif).
@@ -225,7 +232,7 @@ metier(espion).
 metier(aventurier).
 metier(plombier).
 metier(princesse).
-metier(chat).
+
 
 vie(mort).
 vie(vivant).
