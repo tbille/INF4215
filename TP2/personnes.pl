@@ -34,8 +34,7 @@ personnes(X):-
   genreQ(X).
 
 genreQ(X):-
-  format("test"),
-  ask(homme,masculin),!,format("test"),
+  ask(homme,masculin),!,
   prop(X,masculin),
   
   reelQ(X).
