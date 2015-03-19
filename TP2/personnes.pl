@@ -1,75 +1,138 @@
-
 ask(vivant):-
-  format("Votre personnage est-il vivant ?"),
-  read(Reponse),
-  Reponse = oui.
+	format("Votre personnage est-il vivant ? "),
+	read(Reponse),
+	Reponse = oui.
 
 ask(homme):-
-  format("Votre personnage est-il un personnage masculin ?"),
-  read(Reponse),
-  Reponse = oui.
+	format("Votre personnage est-il un personnage masculin ? "),
+	read(Reponse),
+	Reponse = oui.
 
 ask(fictif):-
-  format("Votre personnage est-il un personnage fictif ? "),
-  read(Reponse),
-  Reponse = oui.
+	format("Votre personnage est-il un personnage fictif ? "),
+	read(Reponse),
+	Reponse = oui.
 
-ask(source,Y):-
-  format("Votre personnage provient-il d'un(e) ~w ? ",[Y]),
-  read(Reponse),
-  Reponse = oui.
+ask(source,Source):-
+	format("Votre personnage provient-il d'un(e) ~w ? ",[Source]),
+	read(Reponse),
+	Reponse = oui.
 
-ask(metier,Y):-
-  format("Votre personnage est-il un(e) ~w ? ",[Y]),
-  read(Reponse),
-  Reponse = oui.
+ask(metier,Metier):-
+	format("Votre personnage est-il un(e) ~w ? ",[Metier]),
+	read(Reponse),
+	Reponse = oui.
+
+ask(gouverne,Pays):-
+	format("Votre personnage a-t-il(elle) gouverné ~w ? ",[Pays]),
+	read(Reponse),
+	Reponse = oui.
+
+ask(style,Style):-
+	format("Votre personnage est-il un musicien de ~w ? ",[Style]),
+	read(Reponse),
+	Reponse = oui.
+
+ask(livre,Livre):-
+	format("Votre personnage a-t-il écrit ~w ? ",[Livre]),
+	read(Reponse),
+	Reponse = oui.
+
+ask(sport,Sport):-
+	format("Votre personnage pratique-t-il le(la) ~w ? ",[Sport]),
+	read(Reponse),
+	Reponse = oui.
+
+ask(domaine,Domaine):-
+	format("Votre personnage enseigne-t-il ~w ? ",[Domaine]),
+	read(Reponse),
+	Reponse = oui.
+
+ask(eau,Action):-
+	format("Votre personnage a-t-il ~w l'eau ? ",[Action]),
+	read(Reponse),
+	Reponse = oui.
 
 personnes(X):-
-  format("X = ~w" ,[X]),
-  ask(vivant),!,
-  genreQ(X),
-  prop(X,vivant).
+	ask(vivant),!,
+	genreQ(X),
+	prop(X,vivant).
 
 personnes(X):-
-  genreQ(X),
-  prop(X,mort),
-  genreQ(X).
+	genreQ(X),
+	prop(X,mort).
 
 genreQ(X):-
-  format("X = ~w" ,[X]),
-  ask(homme),!,
-  reelQ(X),
-  prop(X,masculin).
+	ask(homme),!,
+	reelQ(X),
+	prop(X,masculin).
 
 genreQ(X):-
-  reelQ(X),
-  prop(X,feminin).
-  
+	reelQ(X),
+	prop(X,feminin).
+	
 reelQ(X):-
-  format("X = ~w" ,[X]),
-  ask(fictif),!,
-  fictif(X),
-  prop(X,fictif).
+	ask(fictif),!,
+	fictif(X),
+	prop(X,fictif).
 
 reelQ(X):-
-  reelPerso(X),
-  prop(X,reel).
+	reelPerso(X),
+	prop(X,reel).
 
 reelPerso(X):-
-  metierQ(X).
+	metierQ(X).
 
 fictif(X):-
-  source(Y),
-  ask(source,Y),!,
-  metierQ(X),
-  prop(X,Y).
+	source(Y),
+	ask(source,Y),!,
+	metierQ(X),
+	prop(X,Y).
 
 metierQ(X):-
-  metier(Y),
-  ask(metier,Y),!,
-  prop(X,Y).
+	metier(Y),
+	ask(metier,Y),!,
+	reste(X,Y),
+	prop(X,Y).
 
+reste(X,Y):-
+	Y = politicien,
+	gouverne(Pays),
+	ask(gouverne,Pays),!,
+	prop(X,Pays).
 
+reste(X,Y):-
+	Y = musicien,
+	style(Style),
+	ask(style,Style),!,
+	prop(X,Style).
+
+reste(X,Y):-
+	Y = auteur,
+	livre(Livre),
+	ask(livre,Livre),!,
+	prop(X,Livre).
+
+reste(X,Y):-
+	Y = sportif,
+	sport(Sport),
+	ask(sport,Sport),!,
+	prop(X,Sport).
+
+reste(X,Y):-
+	Y = professeur,
+	domaine(Domaine),
+	ask(domaine,Domaine),!,
+	prop(X,Domaine).
+
+reste(X,Y):-
+	Y = religieux,
+	eau(Action),
+	ask(eau,Action),!,
+	prop(X,Action).
+
+reste(_,Y):-
+	Y = religieux.
 
 
 %-------------------------------------------
@@ -126,12 +189,12 @@ prop(stephen_Harper,politicien).
 prop(stephen_Harper,masculin).
 prop(stephen_Harper,vivant).
 prop(stephen_Harper,reel).
-prop(stephen_Harper,canada).
+prop(stephen_Harper,le_Canada).
 prop(cleopatre_VII,politicien).
 prop(cleopatre_VII,feminin).
 prop(cleopatre_VII,mort).
 prop(cleopatre_VII,reel).
-prop(cleopatre_VII,egypte).
+prop(cleopatre_VII,l_Egypte_ancienne).
 prop(brad_Pitt,acteur).
 prop(brad_Pitt,masculin).
 prop(brad_Pitt,reel).
@@ -144,12 +207,12 @@ prop(michel_Gagnon,professeur).
 prop(michel_Gagnon,masculin).
 prop(michel_Gagnon,vivant).
 prop(michel_Gagnon,reel).
-prop(michel_Gagnon,ia).
+prop(michel_Gagnon,l_ia).
 prop(michel_Dagenais,professeur).
 prop(michel_Dagenais,masculin).
 prop(michel_Dagenais,vivant).
 prop(michel_Dagenais,reel).
-prop(michel_Dagenais,logiciel_Libre).
+prop(michel_Dagenais,le_logiciel_Libre).
 prop(lara_croft,fictif).
 prop(lara_croft,feminin).
 prop(lara_croft,jeuVideo).
@@ -206,7 +269,7 @@ prop(pape_Francois,reel).
 prop(pape_Francois,vivant).
 prop(moise,religieux).
 prop(moise,masculin).
-prop(moise,marcher).
+prop(moise,marcher_sur).
 prop(moise,reel).
 prop(moise,mort).
 prop(jesus,religieux).
@@ -224,6 +287,7 @@ prop(jesus,mort).
 livre(harry_Potter).
 livre(les_Miserables).
 
+metier(politicien).
 metier(chat).
 metier(religieux).
 metier(auteur).
@@ -235,7 +299,6 @@ metier(espion).
 metier(aventurier).
 metier(plombier).
 metier(princesse).
-
 
 vie(mort).
 vie(vivant).
@@ -255,17 +318,10 @@ sport(tennis).
 sport(f1).
 
 eau(separer).
-eau(marcher).
+eau(marcher_sur).
 
-domaine(ia).
-domaine(logiciel_Libre).
+domaine(l_ia).
+domaine(le_logiciel_Libre).
 
-gouverne(canada).
-gouverne(egypte_ancienne).
-
-
-verifieAttributs(_,[]).
-verifieAttributs(Nom,[Attribut|Q]):-
-  personne(Nom),
-  prop(Nom,Attribut),
-  verifieAttributs(Nom,Q).
+gouverne(le_Canada).
+gouverne(l_Egypte_ancienne).
