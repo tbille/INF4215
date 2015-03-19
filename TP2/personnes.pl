@@ -100,7 +100,6 @@ reelPerso(X):-
 fictif(X):-
 	source(Y),
 	ask(source,Y),!,
-	metierQ(X),
 	prop(X,Y).
 
 metierQ(X):-
