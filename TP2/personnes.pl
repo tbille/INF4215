@@ -15,58 +15,57 @@ ask(fictif):-
   Reponse = oui.
 
 ask(source,Y):-
-  format("Votre personnage provient-il d'un(e) ~w",[Y]),
+  format("Votre personnage provient-il d'un(e) ~w ? ",[Y]),
   read(Reponse),
   Reponse = oui.
 
 ask(metier,Y):-
-  format("Votre personnage est-il un(e) ~w",[Y]),
+  format("Votre personnage est-il un(e) ~w ? ",[Y]),
   read(Reponse),
   Reponse = oui.
 
 personnes(X):-
-  prop(X,vivant),
+  format("X = ~w" ,[X]),
   ask(vivant),!,
-  genreQ(X).
+  genreQ(X),
+  prop(X,vivant).
 
 personnes(X):-
-  prop(X,mort),!,
+  genreQ(X),
+  prop(X,mort),
   genreQ(X).
 
 genreQ(X):-
+  format("X = ~w" ,[X]),
   ask(homme),!,
-  prop(X,masculin),
-  reelQ(X).
+  reelQ(X),
+  prop(X,masculin).
 
 genreQ(X):-
-  prop(X,feminin),!,
-  reelQ(X).
-
-reelQ(X):-
+  reelQ(X),
+  prop(X,feminin).
   
+reelQ(X):-
+  format("X = ~w" ,[X]),
   ask(fictif),!,
-
   fictif(X),
-  prop(X,fictif) .
+  prop(X,fictif).
 
 reelQ(X):-
-  prop(X,reel),!,
-  reelPerso(X).
+  reelPerso(X),
+  prop(X,reel).
 
-reelPerso(_).
+reelPerso(X):-
+  metierQ(X).
 
 fictif(X):-
   source(Y),
-
-  ask(source,Y),
-  prop(X,Y),!,
-  format("test"),
-  metierQ(X).
+  ask(source,Y),!,
+  metierQ(X),
+  prop(X,Y).
 
 metierQ(X):-
-format("a"),
   metier(Y),
-  format("b"),
   ask(metier,Y),!,
   prop(X,Y).
 
@@ -175,29 +174,33 @@ prop(blanche_neige,feminin).
 prop(blanche_neige,fictif).
 prop(blanche_neige,film).
 prop(blanche_neige,princesse).
+prop(blanche_neige,vivant).
 prop(jacques_Villeneuve,f1).
 prop(jacques_Villeneuve,masculin).
 prop(jacques_Villeneuve,reel).
 prop(jacques_Villeneuve,sportif).
+prop(jacques_Villeneuve,vivant).
 prop(rafael_Nadal,tennis).
 prop(rafael_Nadal,masculin).
 prop(rafael_Nadal,reel).
 prop(rafael_Nadal,sportif).
+prop(rafael_Nadal,vivant).
 prop(eugenie_Bouchard,sportif).
 prop(eugenie_Bouchard,feminin).
 prop(eugenie_Bouchard,reel).
 prop(eugenie_Bouchard,tennis).
+prop(eugenie_Bouchard,vivant).
 prop(victor_Hugo,auteur).
 prop(victor_Hugo,mort).
 prop(victor_Hugo,masculin).
 prop(victor_Hugo,reel).
 prop(victor_Hugo,les_Miserables).
-prop(j_K_Rowling, auteur).
+prop(j_K_Rowling,auteur).
 prop(j_K_Rowling,vivant).
 prop(j_K_Rowling,feminin).
 prop(j_K_Rowling,reel).
 prop(j_K_Rowling,harry_Potter).
-prop(pape_Francois, religieux).
+prop(pape_Francois,religieux).
 prop(pape_Francois,masculin).
 prop(pape_Francois,reel).
 prop(pape_Francois,vivant).
