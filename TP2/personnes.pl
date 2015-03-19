@@ -1,3 +1,10 @@
+
+%-------------------------------------------
+%
+%   Asks
+%
+%-------------------------------------------
+
 ask(vivant):-
 	format("Votre personnage est-il vivant ? "),
 	read(Reponse),
@@ -53,12 +60,19 @@ ask(eau,Action):-
 	read(Reponse),
 	Reponse = oui.
 
-personnes(X):-
+
+%-------------------------------------------
+%
+%   Recherche Personne
+%
+%-------------------------------------------
+
+personne(X):-
 	ask(vivant),!,
 	genreQ(X),
 	prop(X,vivant).
 
-personnes(X):-
+personne(X):-
 	genreQ(X),
 	prop(X,mort).
 
@@ -141,28 +155,28 @@ reste(_,Y):-
 %
 %-------------------------------------------
 
-personne(michael_Jackson).
-personne(wolfgang_Amadeus_Mozart).
-personne(john_Lewis).
-personne(stephen_Harper).
-personne(cleopatre_VII).
-personne(brad_Pitt).
-personne(julie_Snyder).
-personne(michel_Gagnon).
-personne(michel_Dagenais).
-personne(lara_croft).
-personne(mario).
-personne(garfield).
-personne(james_Bond).
-personne(blanche_neige).
-personne(jacques_Villeneuve).
-personne(rafael_Nadal).
-personne(eugenie_Bouchard).
-personne(victor_Hugo).
-personne(j_K_Rowling).
-personne(pape_Francois).
-personne(moise).
-personne(jesus).
+personnes(michael_Jackson).
+personnes(wolfgang_Amadeus_Mozart).
+personnes(john_Lewis).
+personnes(stephen_Harper).
+personnes(cleopatre_VII).
+personnes(brad_Pitt).
+personnes(julie_Snyder).
+personnes(michel_Gagnon).
+personnes(michel_Dagenais).
+personnes(lara_croft).
+personnes(mario).
+personnes(garfield).
+personnes(james_Bond).
+personnes(blanche_neige).
+personnes(jacques_Villeneuve).
+personnes(rafael_Nadal).
+personnes(eugenie_Bouchard).
+personnes(victor_Hugo).
+personnes(j_K_Rowling).
+personnes(pape_Francois).
+personnes(moise).
+personnes(jesus).
 
 %-------------------------------------------
 %
@@ -269,12 +283,12 @@ prop(pape_Francois,reel).
 prop(pape_Francois,vivant).
 prop(moise,religieux).
 prop(moise,masculin).
-prop(moise,marcher_sur).
+prop(moise,separer).
 prop(moise,reel).
 prop(moise,mort).
 prop(jesus,religieux).
 prop(jesus,masculin).
-prop(jesus,separer).
+prop(jesus,marcher_sur).
 prop(jesus,reel).
 prop(jesus,mort).
 
