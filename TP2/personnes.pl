@@ -100,6 +100,7 @@ reelPerso(X):-
 fictif(X):-
 	source(Y),
 	ask(source,Y),!,
+  metierQ(X),
 	prop(X,Y).
 
 metierQ(X):-
@@ -147,6 +148,8 @@ reste(X,Y):-
 reste(_,Y):-
 	Y = religieux.
 
+reste(_,_).
+
 
 %-------------------------------------------
 %
@@ -176,6 +179,112 @@ personnes(j_K_Rowling).
 personnes(pape_Francois).
 personnes(moise).
 personnes(jesus).
+
+personnes(bill_Gates).
+personnes(grumpy_Cat).
+personnes(socrate).
+personnes(jules_Cesar).
+personnes(isaac_Newton).
+personnes(samuel_de_Champlain).
+personnes(richard_Nixon).
+personnes(shrek).
+personnes(napoleon_Bonaparte).
+personnes(lady_Gaga).
+personnes(dracula).
+personnes(jack_Sparrow).
+personnes(georges_Lucas).
+personnes(simba).
+personnes(harry_Potter).
+personnes(michel_Therrien).
+personnes(pierre_Bruneau).
+personnes(michael_Phelps).
+personnes(carey_Price).
+
+prop(carey_Price,masculin).
+prop(carey_Price,vivant).
+prop(carey_Price,reel).
+prop(carey_Price,sportif).
+prop(carey_Price,hockey).
+prop(michael_Phelps,masculin).
+prop(michael_Phelps,vivant).
+prop(michael_Phelps,reel).
+prop(michael_Phelps,sportif).
+prop(michael_Phelps,natation).
+prop(pierre_Bruneau,vivant).
+prop(pierre_Bruneau,masculin).
+prop(pierre_Bruneau,reel).
+prop(pierre_Bruneau,animateur).
+prop(michel_Therrien,vivant).
+prop(michel_Therrien,masculin).
+prop(michel_Therrien,entraineur).
+prop(grumpy_Cat,vivant).
+prop(grumpy_Cat,masculin).
+prop(grumpy_Cat,reel).
+prop(grumpy_Cat,chat).
+prop(bill_Gates,vivant).
+prop(bill_Gates,masculin).
+prop(bill_Gates,reel).
+prop(bill_Gates,informaticien).
+prop(socrate,mort).
+prop(socrate,masculin).
+prop(socrate,reel).
+prop(socrate,philosophe).
+prop(jules_Cesar,mort).
+prop(jules_Cesar,masculin).
+prop(jules_Cesar,reel).
+prop(jules_Cesar,politicien).
+prop(jules_Cesar,rome_antique).
+prop(isaac_Newton,mort).
+prop(isaac_Newton,masculin).
+prop(isaac_Newton,reel).
+prop(isaac_Newton,scientifique).
+prop(samuel_de_Champlain,mort).
+prop(samuel_de_Champlain,masculin).
+prop(samuel_de_Champlain,reel).
+prop(samuel_de_Champlain,explorateur).
+prop(richard_Nixon,mort).
+prop(richard_Nixon,masculin).
+prop(richard_Nixon,reel).
+prop(richard_Nixon,politicien).
+prop(richard_Nixon,usa).
+prop(shrek,vivant).
+prop(shrek,fictif).
+prop(shrek,masculin).
+prop(shrek,ogre).
+prop(napoleon_Bonaparte,vivant).
+prop(napoleon_Bonaparte,reel).
+prop(napoleon_Bonaparte,masculin).
+prop(napoleon_Bonaparte,politicien).
+prop(napoleon_Bonaparte,empire_Francais).
+prop(lady_Gaga,vivant).
+prop(lady_Gaga,feminin).
+prop(lady_Gaga,reel).
+prop(lady_Gaga,musicien).
+prop(lady_Gaga,pop).
+prop(dracula,vivant).
+prop(dracula,masculin).
+prop(dracula,fictif).
+prop(dracula,vampire).
+prop(jack_Sparrow,vivant).
+prop(jack_Sparrow,masculin).
+prop(jack_Sparrow,fictif).
+prop(jack_Sparrow,pirate).
+prop(georges_Lucas,vivant).
+prop(georges_Lucas,masculin).
+prop(georges_Lucas,reel).
+prop(georges_Lucas,realisateur).
+prop(simba,vivant).
+prop(simba,masculin).
+prop(simba,fictif).
+prop(simba,lion).
+prop(harry_Potter,vivant).
+prop(harry_Potter,masculin).
+prop(harry_Potter,fictif).
+prop(harry_Potter,sorcier).
+
+
+
+
 
 %-------------------------------------------
 %
@@ -312,6 +421,14 @@ metier(espion).
 metier(aventurier).
 metier(plombier).
 metier(princesse).
+metier(sorcier).
+metier(lion).
+metier(realisateur).
+metier(pirate).
+metier(vampire).
+metier(philosophe).
+metier(informaticien).
+metier(entraineur).
 
 vie(mort).
 vie(vivant).
@@ -329,6 +446,8 @@ source(bd).
 
 sport(tennis).
 sport(f1).
+sport(hockey).
+sport(natation).
 
 eau(separer).
 eau(marcher_sur).
@@ -338,3 +457,6 @@ domaine(le_logiciel_Libre).
 
 gouverne(le_Canada).
 gouverne(l_Egypte_ancienne).
+gouverne(rome_antique).
+gouverne(empire_Francais).
+gouverne(usa).
