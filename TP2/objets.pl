@@ -20,10 +20,6 @@ ask(fonction,Fonction):-
   read(Reponse),
   Reponse = oui.
 
-ask(divertissement,Divertissement):-
-  format("Votre objet sert-il de(d') ~w ? ",[Divertissement]),
-  read(Reponse),
-  Reponse = oui.
 
 objet(X):-
   matiere(Y),
@@ -41,11 +37,11 @@ localisationObjet(X):-
 %divertissement
 particularite(X,salon):-
   divertissement(Y),
-  ask(divertissement,Y),!,
+  ask(fonction,Y),!,
   prop(X,Y).
 particularite(X,chambre):-
   divertissement(Y),
-  ask(divertissement,Y),!,
+  ask(fonction,Y),!,
   prop(X,Y).
 
 
@@ -69,7 +65,7 @@ particularite(_,poche).
 
 particularite(X,bureau):-
   fourniture(Y),
-  ask(fourniture,Y),!,
+  ask(fonction,Y),!,
   prop(X,Y).
 
 %-------------------------------------------
