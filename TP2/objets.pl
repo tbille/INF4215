@@ -64,9 +64,13 @@ particularite(X,salle_de_bain):-
   prop(X,Y).
 
 %reste
-particularite(X,_):-!.
+particularite(X,corps).
+particularite(X,poche).
 
-
+particularite(X,bureau):-
+  fourniture(Y),
+  ask(fourniture,Y),!,
+  prop(X,Y).
 
 %-------------------------------------------
 %
@@ -183,6 +187,7 @@ prop(ordinateur,bureau).
 
 prop(papier,bureau).
 prop(papier,papier).
+prop(papier,contenant).
 
 prop(piano,salon).
 prop(piano,musique).
@@ -193,6 +198,7 @@ prop(porte_feuille,cuir).
 
 prop(enveloppe,papier).
 prop(enveloppe,bureau).
+prop(enveloppe,conteneur).
 
 prop(sac_a_dos,corps).
 prop(sac_a_dos,tissu).
@@ -205,7 +211,7 @@ prop(table,salon).
 prop(table,bois).
 prop(table,meuble).
 
-prop(telephone,electronique).
+prop(telephone,communiquer).
 prop(telephone,salon).
 prop(telephone,plastique).
 
@@ -266,12 +272,11 @@ prop(systeme_de_son,musique).
 
 prop(marteau,metal).
 prop(marteau,garage).
+prop(marteau,entretien).
 
 prop(lunettes,plastique).
 prop(lunettes,corps).
 
-prop(enveloppe,bureau).
-prop(enveloppe,papier).
 
 %-------------------------------------------
 %
@@ -311,6 +316,7 @@ fonction(nourriture).
 fonction(soigner).
 fonction(deplacer).
 fonction(beaute).
+fonction(communiquer).
 
 divertissement(jeu_reflexion).
 divertissement(jeu_construction).
@@ -319,5 +325,6 @@ divertissement(decoration).
 divertissement(meuble).
 divertissement(film).
 
-portabilite(portable).
-portabilite(fixe).
+fourniture(electronique).
+fourniture(conteneur).
+fourniture(contenant).
