@@ -1,31 +1,58 @@
 
-%-------------------------------------------
+%___________________________________________
 %
 %   Recherche Objets
 %
-%-------------------------------------------
+%___________________________________________
 
-ask(materiel,Materiel):-
-  format("Votre objet est-il compose principalement de ~w ? ",[Materiel]),
+ask(materiel,Materiel):_
+  format("Votre objet est_il compose principalement de ~w ? ",[Materiel]),
   read(Reponse),
   Reponse = oui.
 
-ask(localisation,Localisation):-
-  format("Votre objet se trouve-il le plus souvent dans le(la) ~w ? ",[Localisation]),
+ask(localisation,Localisation):_
+  format("Votre objet se trouve_il le plus souvent dans le(la) ~w ? ",[Localisation]),
   read(Reponse),
   Reponse = oui.
 
-ask(fonction,Fonction):-
-  format("Votre objet sert-il de(d') ~w ? ",[Fonction]),
+ask(fonction,Fonction):_
+  format("Votre objet sert_il de(d') ~w ? ",[Fonction]),
   read(Reponse),
   Reponse = oui.
 
 
-%-------------------------------------------
+objets(X):_
+  matiere(Y),
+  ask(materiel,Y),!,
+  localisationObjet(X),
+  prop(X,Y).
+
+localisationObjet(X):_
+  localisation(Y),
+  ask(localisation,Y),!,
+  particularite(X,Y),
+  prop(X,Y).
+
+
+%divertissement
+particularite(X,salon):-!.
+particularite(X,chambre):-!.
+
+%fonction
+particularite(X,garage):-!.
+particularite(X,cuisine):-!.
+particularite(X,salle_de_bain):-!.
+
+%
+particularite(X,_):-!.
+
+
+
+%___________________________________________
 %
 %   Objets
 %
-%-------------------------------------------
+%___________________________________________
 
 objets(aspirateur).
 objets(assiette).
@@ -36,15 +63,15 @@ objets(casserole).
 objets(cle).
 objets(cuisiniere).
 objets(detergent_a_vaisselle).
-objets(four_micro-onde).
+objets(four_micro_onde).
 objets(fourchette).
-objets(grille-pain).
+objets(grille_pain).
 objets(lampe).
 objets(lit).
 objets(ordinateur).
 objets(papier).
 objets(piano).
-objets(porte-feuille).
+objets(porte_feuille).
 objets(sac_a_dos).
 objets(shampoing).
 objets(table).
@@ -68,27 +95,28 @@ objets(lunettes).
 objets(enveloppe).
 
 
-%-------------------------------------------
+%___________________________________________
 %
 %   Props
 %
-%-------------------------------------------
+%___________________________________________
 
 
-prop(aspirateur,electromenager).
 prop(aspirateur,entretien).
 prop(aspirateur,plastique).
-prop(aspirateur,fixe).
-prop(aspirateur,).   %----------------------
+prop(aspirateur,garage).
 
-prop(assiette,portable).
+prop(assiette,plastique).
 prop(assiette,cuisine).
 prop(assiette,vaisselle).
 
 prop(balai,cuisine).
+prop(balai,bois).
 prop(balai,entretien).
 
 prop(cactus,decoration).
+prop(cactus,plante).
+prop(cactus,salon).
 
 prop(cafetiere,electromenager).
 prop(cafetiere,cuisine).
@@ -96,10 +124,8 @@ prop(cafetiere,plastique).
 
 prop(casserole,cuisine).
 prop(casserole,vaisselle).
-prop(casserole,contenur).
 prop(casserole,metal).
 
-prop(cle,portable).
 prop(cle,poche).
 prop(cle,metal).
 
@@ -108,22 +134,20 @@ prop(cuisiniere,cuisine).
 prop(cuisiniere,metal).
 
 prop(detergent_a_vaisselle,cuisine).
-prop(detergent_a_vaisselle,entretien).
+prop(detergent_a_vaisselle,liquide).
 prop(detergent_a_vaisselle,laver).
 
-prop(four_micro-onde,electromenager).
-prop(four_micro-onde,cuisine).
-prop(four_micro-onde,contenant).
-prop(four_micro-onde,metal).
+prop(four_micro_onde,electromenager).
+prop(four_micro_onde,cuisine).
+prop(four_micro_onde,metal).
 
 prop(fourchette,cuisine).
 prop(fourchette,vaisselle).
 prop(fourchette,metal).
 
-prop(grille-pain,electromenager).
-prop(grille-pain,cuisine).
-prop(grille-pain,contenant).
-prop(grille-pain,metal).
+prop(grille_pain,electromenager).
+prop(grille_pain,cuisine).
+prop(grille_pain,metal).
 
 prop(lampe,chambre).
 prop(lampe,decoration).
@@ -136,27 +160,23 @@ prop(ordinateur,electronique).
 prop(ordinateur,metal).
 prop(ordinateur,bureau).
 
-prop(papier,chambre).
+prop(papier,bureau).
 prop(papier,papier).
 
-prop(piano,decoration).
+prop(piano,salon).
 prop(piano,musique).
 prop(piano,bois).
 
-prop(porte-feuille,portable).
-prop(porte-feuille,poche).
-prop(porte-feuille,cuir).
+prop(porte_feuille,poche).
+prop(porte_feuille,cuir).
 
+prop(enveloppe,papier).
+prop(enveloppe,bureau).
 
-prop(enveloppe,).
-prop(enveloppe,).
-prop(enveloppe,).
-prop(enveloppe,).
-
-prop(sac_a_dos,portable).
-prop(sac_a_dos,conteneur).
+prop(sac_a_dos,corps).
 prop(sac_a_dos,tissu).
 
+prop(shampoing,liquide).
 prop(shampoing,salle_de_bain).
 prop(shampoing,laver).
 
@@ -190,7 +210,6 @@ prop(horloge,bois).
 prop(horloge,bureau).
 
 prop(sac_de_chips,cuisine).
-prop(sac_de_chips,conteneur).
 prop(sac_de_chips,plastique).
 
 prop(cube_rubik,plastique).
@@ -206,42 +225,33 @@ prop(parfum,salle_de_bain).
 
 prop(dvd,electronique).
 prop(dvd,plastique).
+prop(dvd,salon).
 
 prop(lego,plastique).
 prop(lego,chambre).
 prop(lego,jeu).
-prop(lego,portable).
 
-prop(tylenol,portable).
 prop(tylenol,medicament).
 prop(tylenol,salle_de_bain).
-prop(tylenol,).
 
-prop(systeme_de_son,fixe).
 prop(systeme_de_son,plastique).
 prop(systeme_de_son,salon).
 prop(systeme_de_son,musique).
 
 prop(marteau,metal).
 prop(marteau,garage).
-prop(marteau,entretien).
-prop(marteau,portable).
 
 prop(lunettes,plastique).
-prop(lunettes,portable).
-prop(lunettes,contenu).
-prop(lunettes,poche).
+prop(lunettes,corps).
 
 prop(enveloppe,bureau).
 prop(enveloppe,papier).
-prop(enveloppe,portable).
-prop(enveloppe,contenant).
 
-%-------------------------------------------
+%___________________________________________
 %
 %   Attributs
 %
-%-------------------------------------------
+%___________________________________________
 
 localisation(cuisine).
 localisation(bureau).
@@ -259,6 +269,8 @@ matiere(bois).
 matiere(medicament).
 matiere(cuir).
 matiere(tissu).
+matiere(liquide).
+matiere(plante).
 
 fonction(entretien).
 fonction(vaisselle).
