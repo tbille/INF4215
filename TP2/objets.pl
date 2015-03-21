@@ -1,33 +1,37 @@
 
-%___________________________________________
+%-------------------------------------------
 %
 %   Recherche Objets
 %
-%___________________________________________
+%-------------------------------------------
 
-ask(materiel,Materiel):_
-  format("Votre objet est_il compose principalement de ~w ? ",[Materiel]),
+ask(materiel,Materiel):-
+  format("Votre objet est-il compose principalement de ~w ? ",[Materiel]),
   read(Reponse),
   Reponse = oui.
 
-ask(localisation,Localisation):_
-  format("Votre objet se trouve_il le plus souvent dans le(la) ~w ? ",[Localisation]),
+ask(localisation,Localisation):-
+  format("Votre objet se trouve-il le plus souvent dans le(la) ~w ? ",[Localisation]),
   read(Reponse),
   Reponse = oui.
 
-ask(fonction,Fonction):_
-  format("Votre objet sert_il de(d') ~w ? ",[Fonction]),
+ask(fonction,Fonction):-
+  format("Votre objet sert-il de(d') ~w ? ",[Fonction]),
   read(Reponse),
   Reponse = oui.
 
+ask(divertissement,Divertissement):-
+  format("Votre objet sert-il de(d') ~w ? ",[Divertissement]),
+  read(Reponse),
+  Reponse = oui.
 
-objets(X):_
+objet(X):-
   matiere(Y),
   ask(materiel,Y),!,
   localisationObjet(X),
   prop(X,Y).
 
-localisationObjet(X):_
+localisationObjet(X):-
   localisation(Y),
   ask(localisation,Y),!,
   particularite(X,Y),
@@ -35,24 +39,40 @@ localisationObjet(X):_
 
 
 %divertissement
-particularite(X,salon):-!.
-particularite(X,chambre):-!.
+particularite(X,salon):-
+  divertissement(Y),
+  ask(divertissement,Y),!,
+  prop(X,Y).
+particularite(X,chambre):-
+  divertissement(Y),
+  ask(divertissement,Y),!,
+  prop(X,Y).
+
 
 %fonction
-particularite(X,garage):-!.
-particularite(X,cuisine):-!.
-particularite(X,salle_de_bain):-!.
+particularite(X,garage):-
+  fonction(Y),
+  ask(fonction,Y),!,
+  prop(X,Y).
+particularite(X,cuisine):-
+  fonction(Y),
+  ask(fonction,Y),!,
+  prop(X,Y).
+particularite(X,salle_de_bain):-
+  fonction(Y),
+  ask(fonction,Y),!,
+  prop(X,Y).
 
-%
+%reste
 particularite(X,_):-!.
 
 
 
-%___________________________________________
+%-------------------------------------------
 %
 %   Objets
 %
-%___________________________________________
+%-------------------------------------------
 
 objets(aspirateur).
 objets(assiette).
@@ -95,18 +115,18 @@ objets(lunettes).
 objets(enveloppe).
 
 
-%___________________________________________
+%-------------------------------------------
 %
 %   Props
 %
-%___________________________________________
+%-------------------------------------------
 
 
 prop(aspirateur,entretien).
 prop(aspirateur,plastique).
 prop(aspirateur,garage).
 
-prop(assiette,plastique).
+prop(assiette,porcelaine).
 prop(assiette,cuisine).
 prop(assiette,vaisselle).
 
@@ -118,18 +138,18 @@ prop(cactus,decoration).
 prop(cactus,plante).
 prop(cactus,salon).
 
-prop(cafetiere,electromenager).
+prop(cafetiere,cafe).
 prop(cafetiere,cuisine).
 prop(cafetiere,plastique).
 
 prop(casserole,cuisine).
 prop(casserole,vaisselle).
-prop(casserole,metal).
+prop(casserole,teffal).
 
 prop(cle,poche).
 prop(cle,metal).
 
-prop(cuisiniere,electromenager).
+prop(cuisiniere,cuire).
 prop(cuisiniere,cuisine).
 prop(cuisiniere,metal).
 
@@ -137,7 +157,7 @@ prop(detergent_a_vaisselle,cuisine).
 prop(detergent_a_vaisselle,liquide).
 prop(detergent_a_vaisselle,laver).
 
-prop(four_micro_onde,electromenager).
+prop(four_micro_onde,griller).
 prop(four_micro_onde,cuisine).
 prop(four_micro_onde,metal).
 
@@ -145,7 +165,7 @@ prop(fourchette,cuisine).
 prop(fourchette,vaisselle).
 prop(fourchette,metal).
 
-prop(grille_pain,electromenager).
+prop(grille_pain,griller).
 prop(grille_pain,cuisine).
 prop(grille_pain,metal).
 
@@ -155,6 +175,7 @@ prop(lampe,metal).
 
 prop(lit,bois).
 prop(lit,chambre).
+prop(lit,meuble).
 
 prop(ordinateur,electronique).
 prop(ordinateur,metal).
@@ -180,8 +201,9 @@ prop(shampoing,liquide).
 prop(shampoing,salle_de_bain).
 prop(shampoing,laver).
 
-prop(table,cuisine).
+prop(table,salon).
 prop(table,bois).
+prop(table,meuble).
 
 prop(telephone,electronique).
 prop(telephone,salon).
@@ -192,12 +214,13 @@ prop(chaussure,cuir).
 
 prop(jeu_de_carte,papier).
 prop(jeu_de_carte,salon).
-prop(jeu_de_carte,jeu).
+prop(jeu_de_carte,jeu_reflexion).
 
 prop(bicyclette,metal).
 prop(bicyclette,garage).
+prop(bicyclette,deplacer).
 
-prop(table_de_billard,jeu).
+prop(table_de_billard,jeu_reflexion).
 prop(table_de_billard,bois).
 prop(table_de_billard,salon).
 
@@ -211,28 +234,31 @@ prop(horloge,bureau).
 
 prop(sac_de_chips,cuisine).
 prop(sac_de_chips,plastique).
+prop(sac_de_chips,nourriture).
 
 prop(cube_rubik,plastique).
-prop(cube_rubik,jeu).
+prop(cube_rubik,jeu_reflexion).
 prop(cube_rubik,chambre).
 
-prop(television,electronique).
-prop(television,jeu).
+prop(television,salon).
 prop(television,plastique).
+prop(television,meuble).
 
-prop(parfum,portable).
+prop(parfum,liquide).
 prop(parfum,salle_de_bain).
+prop(parfum,beaute).
 
-prop(dvd,electronique).
 prop(dvd,plastique).
 prop(dvd,salon).
+prop(dvd,film).
 
 prop(lego,plastique).
 prop(lego,chambre).
-prop(lego,jeu).
+prop(lego,jeu_construction).
 
 prop(tylenol,medicament).
 prop(tylenol,salle_de_bain).
+prop(tylenol,soigner).
 
 prop(systeme_de_son,plastique).
 prop(systeme_de_son,salon).
@@ -247,11 +273,11 @@ prop(lunettes,corps).
 prop(enveloppe,bureau).
 prop(enveloppe,papier).
 
-%___________________________________________
+%-------------------------------------------
 %
 %   Attributs
 %
-%___________________________________________
+%-------------------------------------------
 
 localisation(cuisine).
 localisation(bureau).
@@ -271,21 +297,27 @@ matiere(cuir).
 matiere(tissu).
 matiere(liquide).
 matiere(plante).
+matiere(porcelaine).
+matiere(teffal).
 
 fonction(entretien).
 fonction(vaisselle).
 fonction(laver).
+fonction(cuire).
+fonction(griller).
+fonction(rechauffer).
+fonction(cafe).
+fonction(nourriture).
+fonction(soigner).
+fonction(deplacer).
+fonction(beaute).
 
-divertissement(jeu).
+divertissement(jeu_reflexion).
+divertissement(jeu_construction).
 divertissement(musique).
 divertissement(decoration).
-
+divertissement(meuble).
+divertissement(film).
 
 portabilite(portable).
 portabilite(fixe).
-
-conteneur(contenant).
-conteneur(contenu).
-
-electricite(electromenager).
-electricite(electronique).
