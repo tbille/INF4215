@@ -1,23 +1,41 @@
-;Electroménager;Electronique;Portable;Cuisine;Chambre;Vaiselle;Décoration;Entretien;Salle de Bain;Conteneur;Poche;
-Aspirateur;X;;;;;;;X;;;;
-Assiette;;;;X;;X;;;;;;
-Balai;;;;X;;;;X;;;;
-Cactus;;;;;;;X;;;;;
-Cafetière ;X;;;X;;;;;;;;
-Casserole;;;;X;;X;;;;;;
-Clé;;;X;;;;;;;;X;
-Cuisinière;X;;;X;;;;;;;;
-Détergent à vaisselle ;;;;X;;X;;X;;;;
-Four micro-onde;X;;;X;;;;;;X;;
-Fourchette;;;;X;;X;;;;;;
-Grille-pain;X;;;X;;;;;;X;;
-Lampe ;;;;;X;;X;;;;;
-Lit ;;;;;X;;;;;;;
-Ordinateur;;X;;;;;;;;;;
-Papier;;;;;X;;;;;;;
-Piano ;;;;;;;X;;;;;
-Porte-feuille;;;X;;;;;;;;X;
-Sac à dos;;;X;;;;;;;X;;
-Shampoing;;;;;;;;;X;;;
-Table;;;;X;;;;;;;;
-Téléphone;;X;;;;;;;;;X;
+,Electroménager,Electronique,Portable,Cuisine,Chambre,Vaiselle,Décoration,Entretien,Salle de Bain,Conteneur,Poche,Jouet
+Aspirateur,X,,,,,,,X,,,,
+Assiette,,,,X,,X,,,,,,
+Balai,,,,X,,,,X,,,,
+Cactus,,,,,,,X,,,,,
+Cafetière ,X,,,X,,,,,,,,
+Casserole,,,,X,,X,,,,,,
+Clé,,,X,,,,,,,,X,
+Cuisinière,X,,,X,,,,,,,,
+Détergent à vaisselle ,,,,X,,X,,X,,,,
+Four micro-onde,X,,,X,,,,,,X,,
+Fourchette,,,,X,,X,,,,,,
+Grille-pain,X,,,X,,,,,,X,,
+Lampe ,,,,,X,,X,,,,,
+Lit ,,,,,X,,,,,,,
+Ordinateur,,X,,,,,,,,,,
+Papier,,,,,X,,,,,,,
+Piano ,,,,,,,X,,,,,
+Porte-feuille,,,X,,,,,,,,X,
+Sac à dos,,,X,,,,,,,X,,
+Shampoing,,,,,,,,,X,,,
+Table,,,,X,,,,,,,,
+Téléphone,,X,,,,,,,,,X,
+,,,,,,,,,,,,
+Chaussure,,,,,,,,,,X,,
+Jeu de carte,,,,,,,,,,,X,X
+Bicyclette,,,,,,,,,,,,
+Table de billard,,,,,,,X,,,,,
+Album photos,,,,,,,X,,,,,
+Horloge,,,,,,,,,,,,
+Sac de chips,,,,X,,,,,,,,
+Cube Rubik,,,,,,,,,,,,X
+Télévision,,X,,,,,,,,,,
+Parfum,,,,,,,,,X,,,
+DVD,,X,,,,,,,,,,
+Lego,,,,,,,,,,,,X
+Tylenol,,,,,,,,,,,,
+Système de son,,X,,,,,,,,,,
+Marteau,,,,,,,,X,,,,
+Lunettes,,,,,,,,,,,,
+Enveloppe,,,,,,,,,,X,,
