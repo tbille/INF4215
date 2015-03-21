@@ -64,8 +64,8 @@ particularite(X,salle_de_bain):-
   prop(X,Y).
 
 %reste
-particularite(X,corps).
-particularite(X,poche).
+particularite(_,corps).
+particularite(_,poche).
 
 particularite(X,bureau):-
   fourniture(Y),
