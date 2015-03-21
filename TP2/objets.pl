@@ -61,6 +61,7 @@ objets(enveloppe).
 localisation(cuisine).
 localisation(chambre).
 localisation(salle_de_bain).
+localisation(poche).
 
 matiere(plastique).
 matiere(metal).
@@ -69,4 +70,18 @@ matiere(bois).
 
 fonction(entretien).
 fonction(vaisselle).
-fonction(divertissement).
+fonction(laver).
+
+divertissement(jeu).
+divertissement(musique).
+divertissement(decoration).
+
+
+portabilite(vrai).
+portabilite(faux).
+
+conteneur(vrai).
+conteneur(faux).
+
+electricite(electromenager).
+electricite(electronique).
