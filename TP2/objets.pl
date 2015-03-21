@@ -58,6 +58,19 @@ objets(enveloppe).
 
 
 
+
+
+
+
+
+
+prop(enveloppe,).
+prop(enveloppe,).
+prop(enveloppe,).
+prop(enveloppe,).
+
+
+
 localisation(cuisine).
 localisation(chambre).
 localisation(salle_de_bain).
@@ -77,11 +90,11 @@ divertissement(musique).
 divertissement(decoration).
 
 
-portabilite(vrai).
-portabilite(faux).
+portabilite(portable).
+portabilite(fixe).
 
-conteneur(vrai).
-conteneur(faux).
+conteneur(contenant).
+conteneur(contenu).
 
 electricite(electromenager).
 electricite(electronique).
