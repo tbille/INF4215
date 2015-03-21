@@ -9,8 +9,8 @@ ask(localisation,Localisation):-
   read(Reponse),
   Reponse = oui.
 
-ask(utilite,Utilite):-
-  format("Votre objet se trouve-il le plus souent dans le(la) ~w ? ",[Location]),
+ask(fonction,Fonction):-
+  format("Votre objet sert-il de(d') ~w ? ",[Fonction]),
   read(Reponse),
   Reponse = oui.
 
@@ -54,3 +54,19 @@ objets(systeme_de_son).
 objets(marteau).
 objets(lunettes).
 objets(enveloppe).
+
+
+
+
+localisation(cuisine).
+localisation(chambre).
+localisation(salle_de_bain).
+
+matiere(plastique).
+matiere(metal).
+matiere(papier).
+matiere(bois).
+
+fonction(entretien).
+fonction(vaisselle).
+fonction(divertissement).
