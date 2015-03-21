@@ -1,41 +1,40 @@
-,Electroménager,Electronique,Portable,Cuisine,Chambre,Vaiselle,Décoration,Entretien,Salle de Bain,Conteneur,Poche,Jouet
-Aspirateur,X,,,,,,,X,,,,
-Assiette,,,,X,,X,,,,,,
-Balai,,,,X,,,,X,,,,
-Cactus,,,,,,,X,,,,,
-Cafetière ,X,,,X,,,,,,,,
-Casserole,,,,X,,X,,,,,,
-Clé,,,X,,,,,,,,X,
-Cuisinière,X,,,X,,,,,,,,
-Détergent à vaisselle ,,,,X,,X,,X,,,,
-Four micro-onde,X,,,X,,,,,,X,,
-Fourchette,,,,X,,X,,,,,,
-Grille-pain,X,,,X,,,,,,X,,
-Lampe ,,,,,X,,X,,,,,
-Lit ,,,,,X,,,,,,,
-Ordinateur,,X,,,,,,,,,,
-Papier,,,,,X,,,,,,,
-Piano ,,,,,,,X,,,,,
-Porte-feuille,,,X,,,,,,,,X,
-Sac à dos,,,X,,,,,,,X,,
-Shampoing,,,,,,,,,X,,,
-Table,,,,X,,,,,,,,
-Téléphone,,X,,,,,,,,,X,
-,,,,,,,,,,,,
-Chaussure,,,,,,,,,,X,,
-Jeu de carte,,,,,,,,,,,X,X
-Bicyclette,,,,,,,,,,,,
-Table de billard,,,,,,,X,,,,,
-Album photos,,,,,,,X,,,,,
-Horloge,,,,,,,,,,,,
-Sac de chips,,,,X,,,,,,,,
-Cube Rubik,,,,,,,,,,,,X
-Télévision,,X,,,,,,,,,,
-Parfum,,,,,,,,,X,,,
-DVD,,X,,,,,,,,,,
-Lego,,,,,,,,,,,,X
-Tylenol,,,,,,,,,,,,
-Système de son,,X,,,,,,,,,,
-Marteau,,,,,,,,X,,,,
-Lunettes,,,,,,,,,,,,
-Enveloppe,,,,,,,,,,X,,
+;Electroménager;Electronique;Portable;Cuisine;Chambre;Vaiselle;Décoration;Entretien;Salle de Bain;Conteneur;Poche;Jouet;Metal;Plastique;Bois;
+Aspirateur;X;;;;;;;X;;;;;;X;;
+Assiette;;;;X;;X;;;;;;;;;;
+Balai;;;;X;;;;X;;;;;;;;
+Cactus;;;;;;;X;;;;;;;;;
+Cafetière ;X;;;X;;;;;;;;;;X;;
+Casserole;;;;X;;X;;;;;;;X;;;
+Clé;;;X;;;;;;;;X;;X;;;
+Cuisinière;X;;;X;;;;;;;;;X;;;
+Détergent à vaisselle ;;;;X;;X;;X;;;;;;;;
+Four micro-onde;X;;;X;;;;;;X;;;X;;;
+Fourchette;;;;X;;X;;;;;;;X;;;
+Grille-pain;X;;;X;;;;;;X;;;X;;;
+Lampe ;;;;;X;;X;;;;;;;;;
+Lit ;;;;;X;;;;;;;;;;X;
+Ordinateur;;X;;;;;;;;;;;X;;;
+Papier;;;;;X;;;;;;;;;;X;
+Piano ;;;;;;;X;;;;;;;;X;
+Porte-feuille;;;X;;;;;;;;X;;;;;
+Sac à dos;;;X;;;;;;;X;;;;;;
+Shampoing;;;;;;;;;X;;;;;;;
+Table;;;;X;;;;;;;;;;;X;
+Téléphone;;X;;;;;;;;;X;;;X;;
+Chaussure;;;X;;;;;;;;;;;;;
+Jeu de carte;;;;;;;;;;;X;X;;;;
+Bicyclette;;;;;;;;;;;;;X;;;
+Table de billard;;;;;;;X;;;;;;;;X;
+Album photos;;;;;;;X;;;;;;;;;
+Horloge;;;;;;;X;;;;;;;;X;
+Sac de chips;;;;X;;;;;;X;;;;X;;
+Cube Rubik;;;;;;;;;;;;X;;;;
+Télévision;;X;;;;;;;;;;;X;X;;
+Parfum;;;;;;;;;X;;;;;;;
+DVD;;X;;;;;;;;;;;;X;;
+Lego;;;;;;;;;;;;X;;X;;
+Tylenol;;;;;;;;;;;;;;;;
+Système de son;;X;;;;;;;;;;;;X;;
+Marteau;;;;;;;;X;;;;;X;;;
+Lunettes;;;X;;;;;;;;;;;X;;
+Enveloppe;;;;;;;;;;X;;;;;X;
