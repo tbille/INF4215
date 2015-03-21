@@ -109,46 +109,39 @@ metierQ(X):-
 	reste(X,Y),
 	prop(X,Y).
 
-reste(X,Y):-
-	Y = politicien,
+reste(X,politicien):-
 	gouverne(Pays),
 	ask(gouverne,Pays),!,
 	prop(X,Pays).
 
-reste(X,Y):-
-	Y = musicien,
+reste(X,musicien):-
 	style(Style),
 	ask(style,Style),!,
 	prop(X,Style).
 
-reste(X,Y):-
-	Y = auteur,
+reste(X,auteur):-
 	livre(Livre),
 	ask(livre,Livre),!,
 	prop(X,Livre).
 
-reste(X,Y):-
-	Y = sportif,
+reste(X,sportif):-
 	sport(Sport),
 	ask(sport,Sport),!,
 	prop(X,Sport).
 
-reste(X,Y):-
-	Y = professeur,
+reste(X,professeur):-
 	domaine(Domaine),
 	ask(domaine,Domaine),!,
 	prop(X,Domaine).
 
-reste(X,Y):-
-	Y = religieux,
+reste(X,religieux):-
 	eau(Action),
 	ask(eau,Action),!,
 	prop(X,Action).
 
-reste(_,Y):-
-	Y = religieux.
+reste(_,religieux):-!.
 
-reste(_,_).
+reste(_,Y):-metier(Y).
 
 
 %-------------------------------------------
@@ -249,9 +242,10 @@ prop(richard_Nixon,politicien).
 prop(richard_Nixon,usa).
 prop(shrek,vivant).
 prop(shrek,fictif).
+prop(shrek,film).
 prop(shrek,masculin).
 prop(shrek,ogre).
-prop(napoleon_Bonaparte,vivant).
+prop(napoleon_Bonaparte,mort).
 prop(napoleon_Bonaparte,reel).
 prop(napoleon_Bonaparte,masculin).
 prop(napoleon_Bonaparte,politicien).
@@ -264,10 +258,12 @@ prop(lady_Gaga,pop).
 prop(dracula,vivant).
 prop(dracula,masculin).
 prop(dracula,fictif).
+prop(dracula,livre).
 prop(dracula,vampire).
 prop(jack_Sparrow,vivant).
 prop(jack_Sparrow,masculin).
 prop(jack_Sparrow,fictif).
+prop(jack_Sparrow,film).
 prop(jack_Sparrow,pirate).
 prop(georges_Lucas,vivant).
 prop(georges_Lucas,masculin).
@@ -276,10 +272,12 @@ prop(georges_Lucas,realisateur).
 prop(simba,vivant).
 prop(simba,masculin).
 prop(simba,fictif).
+prop(simba,film).
 prop(simba,lion).
 prop(harry_Potter,vivant).
 prop(harry_Potter,masculin).
 prop(harry_Potter,fictif).
+prop(harry_Potter,livre).
 prop(harry_Potter,sorcier).
 
 
@@ -429,6 +427,8 @@ metier(vampire).
 metier(philosophe).
 metier(informaticien).
 metier(entraineur).
+metier(explorateur).
+metier(scientifique).
 
 vie(mort).
 vie(vivant).
@@ -443,6 +443,7 @@ style(pop).
 source(jeuVideo).
 source(film).
 source(bd).
+source(livre).
 
 sport(tennis).
 sport(f1).
