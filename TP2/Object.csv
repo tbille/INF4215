@@ -1,4 +1,4 @@
-;Electroménager;Electronique;Portable;Cuisine;Chambre;Vaiselle;Décoration;Entretien;Salle de Bain;Conteneur;Poche;Jouet;Metal;Plastique;Bois;
+;Electroménager;Electronique;Portable;Cuisine;Chambre;Vaiselle;Décoration;Entretien;Salle de Bain;Conteneur;Poche;Jouet;Metal;Plastique;Bois;Papier
 Aspirateur;X;;;;;;;X;;;;;;X;;
 Assiette;;;;X;;X;;;;;;;;;;
 Balai;;;;X;;;;X;;;;;;;;
@@ -14,7 +14,7 @@ Grille-pain;X;;;X;;;;;;X;;;X;;;
 Lampe ;;;;;X;;X;;;;;;;;;
 Lit ;;;;;X;;;;;;;;;;X;
 Ordinateur;;X;;;;;;;;;;;X;;;
-Papier;;;;;X;;;;;;;;;;X;
+Papier;;;;;X;;;;;;;;;;;X
 Piano ;;;;;;;X;;;;;;;;X;
 Porte-feuille;;;X;;;;;;;;X;;;;;
 Sac à dos;;;X;;;;;;;X;;;;;;
@@ -22,10 +22,10 @@ Shampoing;;;;;;;;;X;;;;;;;
 Table;;;;X;;;;;;;;;;;X;
 Téléphone;;X;;;;;;;;;X;;;X;;
 Chaussure;;;X;;;;;;;;;;;;;
-Jeu de carte;;;;;;;;;;;X;X;;;;
+Jeu de carte;;;;;;;;;;;X;X;;;;X
 Bicyclette;;;;;;;;;;;;;X;;;
 Table de billard;;;;;;;X;;;;;;;;X;
-Album photos;;;;;;;X;;;;;;;;;
+Album photos;;;;;;;X;;;;;;;;;X
 Horloge;;;;;;;X;;;;;;;;X;
 Sac de chips;;;;X;;;;;;X;;;;X;;
 Cube Rubik;;;;;;;;;;;;X;;;;
@@ -37,4 +37,4 @@ Tylenol;;;;;;;;;;;;;;;;
 Système de son;;X;;;;;;;;;;;;X;;
 Marteau;;;;;;;;X;;;;;X;;;
 Lunettes;;;X;;;;;;;;;;;X;;
-Enveloppe;;;;;;;;;;X;;;;;X;
+Enveloppe;;;;;;;;;;X;;;;;;X
