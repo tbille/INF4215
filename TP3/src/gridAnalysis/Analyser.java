@@ -32,6 +32,11 @@ public class Analyser {
 	 * Check if there is consecutive values in the last row
 	 */
 	private void checkLastRow(){
+		int row[] = {0,0,0,0};
+		for (int i = 0; i < 4; i++) {
+			row[i] = pf.getValue(3,i);
+		}
+		
 	} 
 	
 	private void checkToBeUsed(){
