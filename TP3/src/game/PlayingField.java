@@ -819,4 +819,15 @@ public class PlayingField {
 		return ((double)sumPow()/((double)getNumberOccupiedTiles()));
 	}
 	
+	public int maxValue(){
+		int max=2;
+		
+		
+		for (int i = 0; i < this.getX; i++) {
+			for (int j = 0; j < this.getY; j++) {
+				
+			}
+		}
+	}
+	
 }
