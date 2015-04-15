@@ -15,6 +15,9 @@ public class Analyser {
 	public Analyser(PlayingField _pf) {
 		pf = _pf;
 		maxValue = pf.maxValue();
+		
+		checkPosition();
+		checkLastRow();
 	}
 	
 	/*
@@ -32,11 +35,18 @@ public class Analyser {
 	 * Check if there is consecutive values in the last row
 	 */
 	private void checkLastRow(){
-		int row[] = {0,0,0,0};
-		for (int i = 0; i < 4; i++) {
-			row[i] = pf.getValue(3,i);
+		boolean myres=true;
+		for (int i = 0; i < 3; i++) {
+			if ( pf.getValue(3,i) == pf.getValue(3,i+1)*2 || pf.getValue(3,i) == pf.getValue(3,i+1)) {
+				quality += 25*(4-i);
+				myres=myres&&true;
+			}
+			else
+				myres=myres&&false;
 		}
-		
+		if (myres) {
+			quality+=100;
+		}
 	} 
 	
 	private void checkToBeUsed(){
