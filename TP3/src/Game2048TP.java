@@ -2,6 +2,7 @@ import game.PlayingField;
 import gridAnalysis.Analyser;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -20,6 +21,14 @@ public class Game2048TP {
 		double pbD=pbL+25;
 		double pbR=pbD+25;
 		int won=-1;
+		int moved ;
+		
+		ArrayList<String> directions=new ArrayList<>();
+		directions.add("u");
+		directions.add("l");
+		directions.add("d");
+		directions.add("r");
+		
 		for (int i = 0; i < 10; i++) {
 
 
@@ -29,13 +38,42 @@ public class Game2048TP {
 			previousMove="nn";
 			previousQuality=0;
 			double pb_tmp;
+			
+			PlayingField pf_tmp;
+			Analyser anal_tmp;
+			
 			while(pf.movesAvailable()){
 				firstAnalyser = new Analyser(pf);
 
 				res=Math.random()*100;
 				System.out.println(res);
 
-				//
+				
+				/*
+				 * Test des différentes qualité
+				 */
+				String res;
+				for (String str : directions) {
+					pf_tmp=new PlayingField(pf.getCopyOfCells());
+					
+					moved = pf_tmp.moveByString(str);
+			        if(moved>0) pf_tmp.insertRandCell();
+				
+			        anal_tmp = new Analyser(pf_tmp);
+			        anal_tmp.getQuality();
+
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				if(firstAnalyser.getQuality()>previousQuality){
 					switch (previousMove) {
 					case "u":
