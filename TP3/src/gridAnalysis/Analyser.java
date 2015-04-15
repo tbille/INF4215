@@ -16,8 +16,16 @@ public class Analyser {
 		pf = _pf;
 		maxValue = pf.maxValue();
 		
+		checkMaxValue();
 		checkPosition();
 		checkLastRow();
+	}
+	
+	/**
+	 * Check the max value
+	 */
+	private void checkMaxValue(){
+		quality+=maxValue.getValue();
 	}
 	
 	/*
@@ -37,12 +45,14 @@ public class Analyser {
 	private void checkLastRow(){
 		boolean myres=true;
 		for (int i = 0; i < 3; i++) {
-			if ( pf.getValue(3,i) == pf.getValue(3,i+1)*2 || pf.getValue(3,i) == pf.getValue(3,i+1)) {
-				quality += 25*(4-i);
-				myres=myres&&true;
+			if(pf.getValue(3,i) == 0) {
+				if ( pf.getValue(3,i) == pf.getValue(3,i+1)*2 || pf.getValue(3,i) == pf.getValue(3,i+1)) {
+					quality += 25*(4-i);
+					myres=myres&&true;
+				}
+				else
+					myres=myres&&false;
 			}
-			else
-				myres=myres&&false;
 		}
 		if (myres) {
 			quality+=100;
@@ -53,10 +63,22 @@ public class Analyser {
 		//Two adjacent cells with the same values
 	}
 	
+	/**
+	 *  Check values that cannot be used easily
+	 */
 	private void checkIsolated(){
-		//Value that can not be used easily
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+					checkNeighbor(i,j);
+			}
+			
+		}
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getQuality() {
 		return quality;
 	}
