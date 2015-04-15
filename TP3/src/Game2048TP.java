@@ -27,6 +27,14 @@ public class Game2048TP {
 			System.out.println(str);
 			int moved = pf.moveByString(str);
 	        if(moved>0) pf.insertRandCell();
+	        System.out.println("-------------------------");
+	        System.out.println(pf.maxValue().getValue());
+	        for (game.Tuple<Integer,Integer> resr : pf.maxValue().getPositions()) {
+	        	System.out.println(resr.x);
+	        	System.out.println(resr.y);
+				
+			}
+	        
 	        System.out.println(pf);
 		}
 		System.out.println(pf);

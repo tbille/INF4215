@@ -819,15 +819,20 @@ public class PlayingField {
 		return ((double)sumPow()/((double)getNumberOccupiedTiles()));
 	}
 	
-	public int maxValue(){
-		int max=2;
+	public Case maxValue(){
+		Case max=new Case(2);
 		
-		
-		for (int i = 0; i < this.getX; i++) {
-			for (int j = 0; j < this.getY; j++) {
-				
+		for (int i = 0; i < this.getX(); i++) {
+			for (int j = 0; j < this.getY(); j++) {
+				if(cells[i][j]>max.getValue()){
+					max.changeValue(cells[i][j], new Tuple<Integer, Integer>(i, j));;
+				}
+				else if(cells[i][j]==max.getValue() )
+					max.addPosition(new Tuple<Integer, Integer>(i, j));
 			}
 		}
+		
+		return max;
 	}
 	
 }
