@@ -16,10 +16,10 @@ public class Game2048TP {
 		int previousQuality;
 		String previousMove;
 
-		double pbU=25;
-		double pbL=pbU+25;
-		double pbD=pbL+25;
-		double pbR=pbD+25;
+		double pbU=15;
+		double pbL=35;
+		double pbD=35;
+		double pbR=15;
 		int won=-1;
 		int moved ;
 		
@@ -78,32 +78,32 @@ public class Game2048TP {
 					switch (previousMove) {
 					case "u":
 						pb_tmp=pbU;
-						pbU*=1.03;
-						pb_tmp=(pb_tmp-pbU)/3;
+						pbU*=1.1;
+						pb_tmp=(pbU-pb_tmp)/3;
 						pbL-=pb_tmp;
 						pbD-=pb_tmp;
 						pbR-=pb_tmp;
 						break;
 					case "l" :
 						pb_tmp=pbL;
-						pbL*=1.03;
-						pb_tmp=(pb_tmp-pbL)/3;
+						pbL*=1.1;
+						pb_tmp=(pbL-pb_tmp)/3;
 						pbU-=pb_tmp;
 						pbD-=pb_tmp;
 						pbR-=pb_tmp;
 						break;
 					case "d":
 						pb_tmp=pbD;
-						pbD*=1.03;
-						pb_tmp=(pb_tmp-pbD)/3;
+						pbD*=1.1;
+						pb_tmp=(pbD-pb_tmp)/3;
 						pbU-=pb_tmp;
 						pbL-=pb_tmp;
 						pbR-=pb_tmp;
 						break;
 					case "r" :
 						pb_tmp=pbR;
-						pbR*=1.03;
-						pb_tmp=(pb_tmp-pbR)/3;
+						pbR*=1.1;
+						pb_tmp=(pbR-pb_tmp)/3;
 						pbU-=pb_tmp;
 						pbL-=pb_tmp;
 						pbD-=pb_tmp;
@@ -116,32 +116,32 @@ public class Game2048TP {
 					switch (previousMove) {
 						case "u":
 							pb_tmp=pbU;
-							pbU*=0.97;
-							pb_tmp=(pb_tmp-pbU)/3;
+							pbU*=0.90;
+							pb_tmp=(pbU-pb_tmp)/3;
 							pbL-=pb_tmp;
 							pbD-=pb_tmp;
 							pbR-=pb_tmp;
 							break;
 						case "l" :
 							pb_tmp=pbL;
-							pbL*=0.97;
-							pb_tmp=(pb_tmp-pbL)/3;
+							pbL*=0.90;
+							pb_tmp=(pbL-pb_tmp)/3;
 							pbU-=pb_tmp;
 							pbD-=pb_tmp;
 							pbR-=pb_tmp;
 							break;
 						case "d":
 							pb_tmp=pbD;
-							pbD*=0.97;
-							pb_tmp=(pb_tmp-pbD)/3;
+							pbD*=0.90;
+							pb_tmp=(pbD-pb_tmp)/3;
 							pbU-=pb_tmp;
 							pbL-=pb_tmp;
 							pbR-=pb_tmp;
 							break;
 						case "r" :
 							pb_tmp=pbR;
-							pbR*=0.97;
-							pb_tmp=(pb_tmp-pbR)/3;
+							pbR*=0.90;
+							pb_tmp=(pbR-pb_tmp)/3;
 							pbU-=pb_tmp;
 							pbL-=pb_tmp;
 							pbD-=pb_tmp;
@@ -154,9 +154,9 @@ public class Game2048TP {
 
 				if(res<pbU)
 					str="u";
-				else if(res<pbL)
+				else if(res<pbU+pbL)
 					str="l";
-				else if(res<pbD)
+				else if(res<pbU+pbL+pbD)
 					str="d";
 				else
 					str="r";
@@ -167,7 +167,6 @@ public class Game2048TP {
 				System.out.println("L : " + pbL);
 				System.out.println("D : " + pbD);
 				System.out.println("R : " + pbR);
-
 				System.out.println(str);
 				int moved = pf.moveByString(str);
 		        if(moved>0) pf.insertRandCell();
