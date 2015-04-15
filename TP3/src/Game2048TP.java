@@ -1,4 +1,5 @@
 import game.PlayingField;
+import gridAnalysis.Analyser;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -12,10 +13,20 @@ public class Game2048TP {
 		System.out.println(pf);
 		double res;
 		String str;
+		Analyser firstAnalyser;
+		int beforeMove=0;
+		
 		while(pf.movesAvailable()){
-
+			firstAnalyser = new Analyser(pf);
+			
 			res=Math.random()*100;
 			System.out.println(res);
+		
+			if(firstAnalyser.getQuality()>beforeMove){
+				// Qu'est ce qu'il se passe
+			}
+			
+			
 			if(res<25)
 				str="u";
 			else if(res<50)
@@ -24,6 +35,11 @@ public class Game2048TP {
 				str="d";
 			else
 				str="r";
+			
+			
+			
+			
+			
 			System.out.println(str);
 			int moved = pf.moveByString(str);
 	        if(moved>0) pf.insertRandCell();
@@ -34,7 +50,7 @@ public class Game2048TP {
 	        	System.out.println(resr.y);
 				
 			}
-	        
+	        beforeMove=firstAnalyser.getQuality();
 	        System.out.println(pf);
 		}
 		System.out.println(pf);
