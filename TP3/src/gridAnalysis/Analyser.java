@@ -1,25 +1,37 @@
 package gridAnalysis;
 
+import game.Case;
 import game.PlayingField;
+import game.Tuple;
 
 public class Analyser {
 	
 	private PlayingField pf;
-	private int Quality;
+	private int quality = 100;
 	
-	private int maxValue;
+	private Case maxValue;
+	
 	
 	public Analyser(PlayingField _pf) {
 		pf = _pf;
 		maxValue = pf.maxValue();
 	}
 	
+	/*
+	 * Check if the max value is in the bottom left cell
+	 */
 	private void checkPosition(){
-		//Max Value in the Bottom-Left cell
+		for (Tuple<Integer, Integer> positions : maxValue.getPositions()) {
+			if (positions.x == 0 && positions.y == 3) {
+				quality += 100;
+			}
+		}
 	}
 	
+	/*
+	 * Check if there is consecutive values in the last row
+	 */
 	private void checkLastRow(){
-		//Consecutive Values in the last row
 	} 
 	
 	private void checkToBeUsed(){
@@ -30,4 +42,7 @@ public class Analyser {
 		//Value that can not be used easily
 	}
 	
+	public int getQuality() {
+		return quality;
+	}
 }
