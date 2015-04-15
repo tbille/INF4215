@@ -43,6 +43,10 @@ public class PlayingField {
 		return cells[0].length;
 	}
 	
+	public int getValue(int x, int y){
+		
+		return cells[x][y];
+	}
 	
 	/**
 	 * get all tiles which dont have any value assigned
@@ -819,6 +823,11 @@ public class PlayingField {
 		return ((double)sumPow()/((double)getNumberOccupiedTiles()));
 	}
 	
+	/**
+	 * Classe qui retourne la/les valeur/s max de la grille avec toutes ses positions
+	 * 
+	 * @return Case
+	 */
 	public Case maxValue(){
 		Case max=new Case(2);
 		
