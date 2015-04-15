@@ -44,6 +44,7 @@ public class PlayingField {
 	}
 	
 	public int getValue(int x, int y){
+		
 		return cells[x][y];
 	}
 	

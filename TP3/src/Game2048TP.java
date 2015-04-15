@@ -16,6 +16,8 @@ public class Game2048TP {
 		Analyser firstAnalyser;
 		int beforeMove=0;
 		
+		
+		
 		while(pf.movesAvailable()){
 			firstAnalyser = new Analyser(pf);
 			
