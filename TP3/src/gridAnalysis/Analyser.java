@@ -1,5 +1,7 @@
 package gridAnalysis;
 
+import java.util.ArrayList;
+
 import game.Case;
 import game.PlayingField;
 import game.Tuple;
@@ -29,8 +31,9 @@ public class Analyser {
 		int move;
 		float best=0;
 		
+		ArrayList<PlayingField> pfNext = pf.getAllNextPossiblePlayingFieldsPF();
 	    for(move=0; move<4; move++) {
-	        float res = score_toplevel_move(pf, move);
+	        float res = score_toplevel_move(pfNext.get(move),move);
 	        if(res > best) {
 	            best = res;
 	            bestMove = move;
