@@ -42,18 +42,55 @@ public class Analyser {
 	    return bestMove;
 	}
 	
+	private float score_toplevel_move(PlayingField _newPF, int move) {
+	    float res;
+	    //eval_state state;
+	    //state.depth_limit = std::max(3, count_distinct_tiles(board) - 2);
+	    
+	    if(_newPF.equals(pf))
+	      res = 0;
+	    else
+	      score_tilechoose_node(state, newboard, 1.0f) + 1e-6;
+
+	    return res;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	private float score_tilechoose_node(eval_state &state, board_t board, float cprob) {
+	    if (cprob < CPROB_THRESH_BASE || state.curdepth >= state.depth_limit) {
+	        state.maxdepth = std::max(state.curdepth, state.maxdepth);
+	        return score_heur_board(board);
+	    }
+
+	    if (state.curdepth < CACHE_DEPTH_LIMIT) {
+	        const trans_table_t::iterator &i = state.trans_table.find(board);
+	        if (i != state.trans_table.end()) {
+	            state.cachehits++;
+	            return i->second;
+	        }
+	    }
+
+	    int num_open = count_empty(board);
+	    cprob /= num_open;
+
+	    float res = 0.0f;
+	    board_t tmp = board;
+	    board_t tile_2 = 1;
+	    while (tile_2) {
+	        if ((tmp & 0xf) == 0) {
+	            res += score_move_node(state, board |  tile_2      , cprob * 0.9f) * 0.9f;
+	            res += score_move_node(state, board | (tile_2 << 1), cprob * 0.1f) * 0.1f;
+	        }
+	        tmp >>= 4;
+	        tile_2 <<= 4;
+	    }
+	    res = res / num_open;
+
+	    if (state.curdepth < CACHE_DEPTH_LIMIT) {
+	        state.trans_table[board] = res;
+	    }
+
+	    return res;
+	}
 	
 	
 	

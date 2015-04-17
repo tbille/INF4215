@@ -61,7 +61,7 @@ public class Game2048TP {
 			        if(movedPrevision>0) pf_tmp.insertRandCell();
 				
 			        anal_tmp = new Analyser(pf_tmp);
-			        if(!pf.equal(pf_tmp))
+			        if(!pf.equals(pf_tmp))
 			        	resQualPrevision.add(anal_tmp.getQuality());
 			        else{
 			        	resQualPrevision.add(0);
