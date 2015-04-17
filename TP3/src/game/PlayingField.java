@@ -854,4 +854,17 @@ public class PlayingField {
 		return max;
 	}
 	
+	public int nbCaseDistinctes(){
+		ArrayList<Integer> cases=new ArrayList<>();
+		
+		for (int i = 0; i < cells.length; i++) {
+			for (int j = 0; j < cells[0].length; j++) {
+				if(cells[i][j]!=0 && !cases.contains(cells[i][j])){
+					cases.add(cells[i][j]);
+				}
+			}
+		}
+		return cases.size();
+	}
+	
 }

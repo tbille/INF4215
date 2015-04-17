@@ -27,6 +27,8 @@ public class Game2048 {
 			int moved = pf.moveByString(str);
 	        if(moved>0) pf.insertRandCell();
 	        System.out.println(pf);
+	        
+	        System.out.println(pf.nbCaseDistinctes());
 		}
 	}
 }

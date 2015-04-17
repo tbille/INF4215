@@ -9,18 +9,62 @@ public class Analyser {
 	private PlayingField pf;
 	private int quality = 100;
 
+	private int bestMove;
+	
 	private Case maxValue;
-
 
 	public Analyser(PlayingField _pf) {
 		pf = _pf;
 		maxValue = pf.maxValue();
-
+		bestMove=-1;
+		
 		checkTotalValue();
 		checkPosition();
 		checkLastRow();
 		checkRowMaxCorner();
 	}
+	
+
+	public int findBestMove(){
+		int move;
+		float best=0;
+		
+	    for(move=0; move<4; move++) {
+	        float res = score_toplevel_move(pf, move);
+	        if(res > best) {
+	            best = res;
+	            bestMove = move;
+	        }
+	    }
+	    return bestMove;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	private void checkRowMaxCorner() {
 		if (maxValue.getValue() >= 8) {
