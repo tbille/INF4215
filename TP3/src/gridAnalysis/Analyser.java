@@ -50,7 +50,7 @@ public class Analyser {
 	    if(_newPF.equals(pf))
 	      res = 0;
 	    else
-	      score_tilechoose_node(state, newboard, 1.0f) + 1e-6;
+	      res = score_tilechoose_node(state, newboard, 1.0f) + 1e-6;
 
 	    return res;
 	}
