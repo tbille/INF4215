@@ -188,7 +188,7 @@ public class PlayingField {
 		return this.cellsAvailable() || this.tileMatchesAvailable();
 	}
 	
-	public boolean equal(PlayingField _pf){
+	public boolean equals(PlayingField _pf){
 		for (int i = 0; i < cells.length; i++) {
 			for (int j = 0; j < cells[0].length; j++) {
 				if(cells[i][j]!=_pf.getValue(i, j))
