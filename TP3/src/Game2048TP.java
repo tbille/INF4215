@@ -61,14 +61,28 @@ public class Game2048TP {
 			        if(movedPrevision>0) pf_tmp.insertRandCell();
 				
 			        anal_tmp = new Analyser(pf_tmp);
-			        resQualPrevision.add(anal_tmp.getQuality());
+			        if(!pf.equal(pf_tmp))
+			        	resQualPrevision.add(anal_tmp.getQuality());
+			        else{
+			        	resQualPrevision.add(0);
+			        	System.out.println("yoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+			        }
 				}
 				
+				int k=0;
+				Integer max=0;
+				str="";
 				for (Integer integer : resQualPrevision) {
 					System.out.println(integer);
+					
+					if(max<=integer){
+						max=integer;
+						str=directions.get(k);
+					}
+					k++;	
 				}
-				
-				
+				System.out.println(str);
+				/*
 		        // Read the char
 				Scanner s = new Scanner(System.in);
 				String e = s.nextLine();
@@ -165,14 +179,14 @@ public class Game2048TP {
 					str="d";
 				else
 					str="r";
-
+	
 
 				System.out.println("-----------------PROBA");
 				System.out.println("U : " + pbU);
 				System.out.println("L : " + pbL);
 				System.out.println("D : " + pbD);
 				System.out.println("R : " + pbR);
-				System.out.println(str);
+				System.out.println(str);*/
 				int moved = pf.moveByString(str);
 		        if(moved>0) pf.insertRandCell();
 		        System.out.println("-------------------------");
@@ -184,9 +198,9 @@ public class Game2048TP {
 				}
 
 		        // Sauvegarde de l'état
-		        previousMove=str;
+		        /*previousMove=str;
 		        previousQuality=firstAnalyser.getQuality();
-		        System.out.println("This is my quality " +firstAnalyser.getQuality());
+		        System.out.println("This is my quality " +firstAnalyser.getQuality());*/
 		        System.out.println(pf);
 			}
 			if(pf.isGameWon())
