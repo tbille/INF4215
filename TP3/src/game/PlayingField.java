@@ -148,7 +148,7 @@ public class PlayingField {
 	 * @return
 	 */
 	public Boolean tileMatchesAvailable(){
-		/*
+		
 		for (int i = 0; i < getX(); i++) {
 		    for (int u = 0; u < getY(); u++) {
 		      if (cells[i][u]!= 0) {
@@ -165,8 +165,8 @@ public class PlayingField {
 		    }
 		  }
 
-		  return false;*/
-		
+		  return false;
+		/*
 		PlayingField cp1 = this.makeCopy();
 		PlayingField cp2 = this.makeCopy();
 		PlayingField cp3 = this.makeCopy();
@@ -175,7 +175,7 @@ public class PlayingField {
 		if(cp1.up()>0 || cp2.down() >0 || cp3.left()>0 || cp4.right()>0){
 			return true;
 		}
-		return false;
+		return false;*/
 	}
 	
 	

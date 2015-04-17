@@ -60,7 +60,9 @@ public class Analyser {
 	} 
 
 	private void checkToBeUsed(){
-		//Two adjacent cells with the same values
+		if (pf.tileMatchesAvailable()) {
+			quality +=50;
+		}
 	}
 
 	/**
