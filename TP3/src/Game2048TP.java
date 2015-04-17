@@ -30,7 +30,7 @@ public class Game2048TP {
 		directions.add("r");
 		ArrayList<Integer> resQualPrevision;
 		
-		for (int i = 0; i < 10; i++) {
+		//for (int i = 0; i < 10; i++) {
 
 
 			PlayingField pf = new PlayingField(4,4);
@@ -204,10 +204,10 @@ public class Game2048TP {
 		        System.out.println(pf);
 			}
 			if(pf.isGameWon())
-				won=i;
+				won=42;
 
 			System.out.println(pf);
-		}
+		//}
 		System.out.println(won);
 	}
 
