@@ -5,29 +5,29 @@ import game.PlayingField;
 import game.Tuple;
 
 public class Analyser {
-	
+
 	private PlayingField pf;
 	private int quality = 100;
-	
+
 	private Case maxValue;
-	
-	
+
+
 	public Analyser(PlayingField _pf) {
 		pf = _pf;
 		maxValue = pf.maxValue();
-		
+
 		checkMaxValue();
 		checkPosition();
 		checkLastRow();
 	}
-	
+
 	/**
 	 * Check the max value
 	 */
 	private void checkMaxValue(){
 		quality+=maxValue.getValue();
 	}
-	
+
 	/*
 	 * Check if the max value is in the bottom left cell
 	 */
@@ -38,7 +38,7 @@ public class Analyser {
 			}
 		}
 	}
-	
+
 	/*
 	 * Check if there is consecutive values in the last row
 	 */
@@ -58,23 +58,76 @@ public class Analyser {
 			quality+=100;
 		}
 	} 
-	
+
 	private void checkToBeUsed(){
 		//Two adjacent cells with the same values
 	}
-	
+
 	/**
 	 *  Check values that cannot be used easily
 	 */
 	private void checkIsolated(){
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-					checkNeighbor(i,j);
+				quality = (checkNeighborV(i,j)) ? quality-20 : quality;
+				quality = (checkNeighborH(i,j)) ? quality-20 : quality;
 			}
-			
+
 		}
 	}
-	
+
+	private boolean checkNeighborV(int _x, int _y){
+		boolean res = false;
+		int value = pf.getValue(_x, _y);
+		
+		if (value>4) {
+			
+			// - Premiere Ligne
+			if (_x == 0) {
+				int valueUnder = pf.getValue(_x+1,_y);
+				res = (valueUnder < value/2) ? true : false;
+			}
+			else if (_x == 3) {
+				int valueOver = pf.getValue(_x-1,_y);
+				res = (valueOver < value/2) ? true : false;
+			}
+			else {
+				int valueOver = pf.getValue(_x-1,_y);
+				int valueUnder = pf.getValue(_x+1,_y);
+
+				res = (valueOver < value/2) ? true : false;
+				res = (valueUnder < value/2) ? true : false;
+			}
+		}
+		return res;
+	}
+
+	private boolean checkNeighborH(int _x, int _y){
+		boolean res=false;
+		int value = pf.getValue(_x, _y);
+		
+		if (value>4) {
+			
+			// - Premiere Ligne
+			if (_y == 0) {
+				int valueUnder = pf.getValue(_x,_y+1);
+				res = (valueUnder < value/2) ? true : false;
+			}
+			else if (_y == 3) {
+				int valueOver = pf.getValue(_x,_y-1);
+				res = (valueOver < value/2) ? true : false;
+			}
+			else {
+				int valueOver = pf.getValue(_x,_y-1);
+				int valueUnder = pf.getValue(_x,_y+1);
+
+				res = (valueOver < value/2) ? true : false;
+				res = (valueUnder < value/2) ? true : false;
+			}
+		}
+		return res;
+	}
+
 	/**
 	 * 
 	 * @return
