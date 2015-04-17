@@ -72,7 +72,6 @@ public class Analyser {
 				quality = (checkNeighborV(i,j)) ? quality-20 : quality;
 				quality = (checkNeighborH(i,j)) ? quality-20 : quality;
 			}
-
 		}
 	}
 
@@ -90,6 +89,7 @@ public class Analyser {
 			else if (_x == 3) {
 				int valueOver = pf.getValue(_x-1,_y);
 				res = (valueOver < value/2) ? true : false;
+
 			}
 			else {
 				int valueOver = pf.getValue(_x-1,_y);

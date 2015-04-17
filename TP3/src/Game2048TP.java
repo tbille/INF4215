@@ -21,13 +21,14 @@ public class Game2048TP {
 		double pbD=35;
 		double pbR=15;
 		int won=-1;
-		int moved ;
+		int movedPrevision ;
 		
 		ArrayList<String> directions=new ArrayList<>();
 		directions.add("u");
 		directions.add("l");
 		directions.add("d");
 		directions.add("r");
+		ArrayList<Integer> resQualPrevision;
 		
 		for (int i = 0; i < 10; i++) {
 
@@ -52,21 +53,25 @@ public class Game2048TP {
 				/*
 				 * Test des différentes qualité
 				 */
-				String res;
-				for (String str : directions) {
+				resQualPrevision=new ArrayList<>();
+				for (String dir : directions) {
 					pf_tmp=new PlayingField(pf.getCopyOfCells());
 					
-					moved = pf_tmp.moveByString(str);
-			        if(moved>0) pf_tmp.insertRandCell();
+					movedPrevision = pf_tmp.moveByString(dir);
+			        if(movedPrevision>0) pf_tmp.insertRandCell();
 				
 			        anal_tmp = new Analyser(pf_tmp);
-			        anal_tmp.getQuality();
-
+			        resQualPrevision.add(anal_tmp.getQuality());
+				}
+				
+				for (Integer integer : resQualPrevision) {
+					System.out.println(integer);
+				}
 				
 				
-				
-				
-				
+		        // Read the char
+				Scanner s = new Scanner(System.in);
+				String e = s.nextLine();
 				
 				
 				
