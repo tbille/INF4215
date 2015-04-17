@@ -19,6 +19,21 @@ public class Analyser {
 		checkTotalValue();
 		checkPosition();
 		checkLastRow();
+		checkRowMaxCorner();
+	}
+
+	private void checkRowMaxCorner() {
+		if (maxValue.getValue() >= 8) {
+			for (Tuple<Integer, Integer> position : maxValue.getPositions()) {
+				Tuple<Integer, Integer> TL = new Tuple<Integer, Integer>(0, 0);
+				Tuple<Integer, Integer> BR = new Tuple<Integer, Integer>(3, 3);
+				Tuple<Integer, Integer> TR = new Tuple<Integer, Integer>(0, 3);
+				Tuple<Integer, Integer> BL = new Tuple<Integer, Integer>(3, 0);
+				if (position == TL || position == BL || position == TR || position == BR) {
+					quality += 250;
+				}
+			}
+		}
 	}
 
 	/**
