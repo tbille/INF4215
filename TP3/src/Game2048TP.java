@@ -29,8 +29,8 @@ public class Game2048TP {
 		directions.add("d");
 		directions.add("r");
 		ArrayList<Integer> resQualPrevision;
-		
-		for (int i = 0; i < 1; i++) {
+		int nbWin=0;
+		for (int i = 0; i < 100; i++) {
 
 
 			PlayingField pf = new PlayingField(4,4);
@@ -65,7 +65,7 @@ public class Game2048TP {
 			        	resQualPrevision.add(anal_tmp.getQuality());
 			        else{
 			        	resQualPrevision.add(0);
-			        	System.out.println("yoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+			//        	System.out.println("yoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
 			        }
 				}
 				
@@ -73,7 +73,7 @@ public class Game2048TP {
 				Integer max=0;
 				str="";
 				for (Integer integer : resQualPrevision) {
-					System.out.println(integer);
+			//		System.out.println(integer);
 					
 					if(max<=integer){
 						max=integer;
@@ -199,15 +199,18 @@ public class Game2048TP {
 		        // Sauvegarde de l'état
 		        previousMove=str;
 		        previousQuality=firstAnalyser.getQuality();
-		        System.out.println("This is my quality " +firstAnalyser.getQuality());
+		       // System.out.println("This is my quality " +firstAnalyser.getQuality());
 		        System.out.println(pf);
 			}
-			if(pf.isGameWon())
+			if(pf.isGameWon()){
 				won=i;
+				nbWin++;
+				System.out.println("Gagné !");
+			}
 
-			System.out.println(pf);
+			//System.out.println(pf);
 		}
-		System.out.println(won);
+		System.out.println("NB Victoires : " +nbWin);
 	}
 
 }

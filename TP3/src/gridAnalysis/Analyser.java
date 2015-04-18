@@ -23,10 +23,23 @@ public class Analyser {
 		lastColumnSum();
 		checkToBeUsed();
 		checkEmptyTiles();
+		
+		checkGameWon();
 		/*checkTotalValue();
 		checkPosition();
 		checkLastRow();
 		checkRowMaxCorner();*/ 
+	}
+	
+	private void checkGameWon(){
+		if(pf.isGameWon()){
+			quality+=10000;
+		}
+		else{
+			if(!pf.movesAvailable()){
+				quality=0;
+			}
+		}
 	}
 	
 	private void checkSum(){
@@ -70,9 +83,9 @@ public class Analyser {
 				test=false;
 			}
 		}
-		if(test){
-			quality+=100;
-		}
+		//if(test){
+		//	quality+=100;
+		//}
 		
 	}
 	
