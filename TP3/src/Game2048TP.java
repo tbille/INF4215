@@ -15,7 +15,6 @@ public class Game2048TP {
 		String str;
 		Analyser firstAnalyser;
 
-		int won=-1;
 		int movedPrevision ;
 		
 		ArrayList<String> directions=new ArrayList<>();
@@ -48,7 +47,6 @@ public class Game2048TP {
 					
 					// Déplacement dans la direction
 					movedPrevision = pf_tmp.moveByString(dir);
-					System.out.println(movedPrevision);
 			        if(movedPrevision>0) pf_tmp.insertRandCell();
 				
 			        // j'analyse la nouvelle grille
@@ -62,14 +60,14 @@ public class Game2048TP {
 				}
 				
 				int k=0;
-				Integer max=-1;
+				Integer max=new Integer(-1);
 				str="";
 				ArrayList<String> identiques=new ArrayList<>();
 				String tmp_res="";
 				
 				// Ici à partir de toutes les qualités en prévision je récupère la ou les plus grandes
 				for (Integer myInteger : resQualPrevision) {
-					System.out.println(directions.get(k) +" : "+ myInteger);
+					System.out.println(directions.get(k) +" : "+ myInteger.intValue());
 					// je vérifie si jamais elle est pas en double
 					if(myInteger.compareTo(max)==0){
 						identiques.add(directions.get(k));System.out.println("test");
@@ -94,7 +92,11 @@ public class Game2048TP {
 					// si jamais plusieurs directions sont égales je prend au hasard en celles ci, sinon je prend la plus grande 
 					if(identiques.size()>1){
 						System.out.println("identiques");
-						str=identiques.get(0 + (int)(Math.random() * (((identiques.size()-1) - 0) + 1)));
+						//str=identiques.get(0 + (int)(Math.random() * (((identiques.size()-1) - 0) + 1)));
+						str=identiques.get(identiques.size()-1);
+						
+						
+						
 					}
 					else
 						str=tmp_res;
@@ -118,7 +120,6 @@ public class Game2048TP {
 			}
 			// si je gagne je récuprer le résultat
 			if(pf.isGameWon()){
-				won=i;
 				nbWin++;
 				System.out.println("Gagné !");
 			}

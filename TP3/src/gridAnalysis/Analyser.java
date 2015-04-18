@@ -15,18 +15,20 @@ public class Analyser {
 	public Analyser(PlayingField _pf) {
 		pf = _pf;
 		maxValue = pf.maxValue();
-		quality+=maxValue.getValue();
+		//quality+=maxValue.getValue();
 			checkMaxCorner(); 
 			checkLastLineFull();
 			lastLineSum();
 			checkToBeUsed();
 			checkEmptyTiles();
-			//lastColumnSum();
+			lastColumnSum();
 			checkLastRow();
+			//checkTotalValue();
 			checkGameWon();
 
 		
 	}
+	
 	
 	private void checkGameWon(){
 		if(pf.isGameWon()){
@@ -42,7 +44,7 @@ public class Analyser {
 
 	
 	private void checkEmptyTiles(){
-		quality+=pf.getNumberOfFreeCells()*50;
+		quality+=pf.getNumberOfFreeCells()*100;
 	}
 	
 	private void checkLastLineFull(){
@@ -53,7 +55,7 @@ public class Analyser {
 			}
 		}
 		if (myres) {
-			quality+=200;
+			quality+=1000;
 		}
 	}
 	
@@ -78,9 +80,9 @@ public class Analyser {
 				test=false;
 			}
 		}
-		/*if(test){
-			quality+=100;
-		}*/
+		if(test){
+			quality+=500;
+		}
 		
 	}
 	
@@ -101,14 +103,14 @@ public class Analyser {
 			}
 			
 			if(sumL>sumLast){
-				quality-=100;
+				quality-=500;
 				testOk=false;
 			}
 		}
-		/*if (testOk) {
-			quality+=200;
+		if (testOk) {
+			quality+=500;
 		}
-		*/
+		
 		
 		
 	}
@@ -118,7 +120,7 @@ public class Analyser {
 			for (Tuple<Integer, Integer> position : maxValue.getPositions()) {
 				//Tuple<Integer, Integer> BR = new Tuple<Integer, Integer>(3, 3);
 				if (position.x.compareTo(new Integer(3))==0 && position.y.compareTo(new Integer(3))==0) {
-					quality += 500;
+					quality += 5000;
 				}
 			}
 		}
@@ -142,7 +144,7 @@ public class Analyser {
 			}
 		}
 		if (myres) {
-			quality+=100;
+			quality+=1000;
 		}
 	}
 
