@@ -30,7 +30,7 @@ public class Game2048TP {
 		directions.add("r");
 		ArrayList<Integer> resQualPrevision;
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 1; i++) {
 
 
 			PlayingField pf = new PlayingField(4,4);
@@ -83,11 +83,11 @@ public class Game2048TP {
 				}
 				System.out.println(str);
 				
-				/*
+				
 		        // Read the char
 				Scanner s = new Scanner(System.in);
 				String e = s.nextLine();
-				
+				/*
 				
 				
 				
