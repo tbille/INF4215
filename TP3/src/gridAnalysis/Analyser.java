@@ -36,12 +36,12 @@ public class Analyser {
 			quality+=10000;
 		}
 		else{
-			if(!pf.movesAvailable()){
+			/*if(!pf.movesAvailable() && pf.isGameLost()){
 				quality=0;
 			}
 			else{
-				quality+=100;
-			}
+				quality+=150;
+			}*/
 		}
 	}
 	
