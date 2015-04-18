@@ -19,7 +19,7 @@ public class Analyser {
 		checkMaxCorner(); 
 		checkLastLineFull();
 		lastLineSum();
-		checkLastColumnFull();
+		//checkLastColumnFull();
 		lastColumnSum();
 		checkToBeUsed();
 		checkEmptyTiles();
