@@ -8,6 +8,9 @@ import game.Tuple;
 
 public class Analyser {
 
+	private double  CPROB_THRESH_BASE = 0.001f;
+	private int CACHE_DEPTH_LIMIT = 4;
+		
 	private PlayingField pf;
 	private int quality = 100;
 
@@ -37,4 +40,20 @@ public class Analyser {
 	    return bestMove;
 	}
 	
+
+	private float score_toplevel_move(PlayingField _pf, int move) {
+	    float res;
+	    EvalState state = new EvalState();
+	
+	    if(pf.equals(_pf))
+	        res=0;
+	    else{
+	    	state.setCprob_thresh(CPROB_THRESH_BASE);
+	    	res=score_tilechoose_node(state, _pf, 1.0);
+	    }
+
+	    return res;
+	}
+	
+}
 	
