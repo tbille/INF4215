@@ -82,6 +82,7 @@ public class Game2048TP {
 					k++;	
 				}
 				System.out.println(str);
+				
 				/*
 		        // Read the char
 				Scanner s = new Scanner(System.in);
@@ -186,7 +187,9 @@ public class Game2048TP {
 				System.out.println("L : " + pbL);
 				System.out.println("D : " + pbD);
 				System.out.println("R : " + pbR);
-				System.out.println(str);*/
+				System.out.println(str);
+				*/
+				
 				int moved = pf.moveByString(str);
 		        if(moved>0) pf.insertRandCell();
 		        System.out.println("-------------------------");
@@ -198,9 +201,9 @@ public class Game2048TP {
 				}
 
 		        // Sauvegarde de l'état
-		        /*previousMove=str;
+		        previousMove=str;
 		        previousQuality=firstAnalyser.getQuality();
-		        System.out.println("This is my quality " +firstAnalyser.getQuality());*/
+		        System.out.println("This is my quality " +firstAnalyser.getQuality());
 		        System.out.println(pf);
 			}
 			if(pf.isGameWon())

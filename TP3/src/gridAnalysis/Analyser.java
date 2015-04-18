@@ -18,7 +18,7 @@ public class Analyser {
 
 		checkMaxCorner(); 
 		checkLastLineFull();
-		
+		lastLineSum();
 		
 	/*	checkTotalValue();
 		checkPosition();
@@ -38,7 +38,23 @@ public class Analyser {
 		}
 	}
 	
-
+	private void lastLineSum(){
+		int sumLast=0;
+		for (int i = 0; i < 4; i++) {
+			sumLast+=pf.getValue(3, i);
+		}
+		int sumL;
+		for (int i = 0; i < 3; i++) {
+			sumL=0;
+			for (int j = 0; j < 4; j++) {
+				sumLast+=pf.getValue(i, j);
+			}
+			
+			if(sumL>sumLast)
+				quality-=100;
+		}
+		
+	}
 	private void checkMaxCorner() {
 		if (maxValue.getValue() >= 8) {
 			for (Tuple<Integer, Integer> position : maxValue.getPositions()) {
