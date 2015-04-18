@@ -22,10 +22,10 @@ public class Analyser {
 		checkLastColumnFull();
 		lastColumnSum();
 		
-	/*	checkTotalValue();
+		/*checkTotalValue();
 		checkPosition();
 		checkLastRow();
-		checkRowMaxCorner(); */
+		checkRowMaxCorner();*/ 
 	}
 	
 	private void checkLastLineFull(){
@@ -85,8 +85,8 @@ public class Analyser {
 	private void checkMaxCorner() {
 		if (maxValue.getValue() >= 8) {
 			for (Tuple<Integer, Integer> position : maxValue.getPositions()) {
-				Tuple<Integer, Integer> BR = new Tuple<Integer, Integer>(3, 3);
-				if (position == BR) {
+				//Tuple<Integer, Integer> BR = new Tuple<Integer, Integer>(3, 3);
+				if (position.x==3 && position.y==3) {
 					quality += 500;
 				}
 			}
