@@ -16,12 +16,29 @@ public class Analyser {
 		pf = _pf;
 		maxValue = pf.maxValue();
 
-		checkTotalValue();
+		checkRowMaxCorner(); 
+		checkLastLineFull();
+		
+		
+	/*	checkTotalValue();
 		checkPosition();
 		checkLastRow();
-		checkRowMaxCorner();
+		checkRowMaxCorner(); */
 	}
-
+	
+	private void checkLastLineFull(){
+		boolean myres=true;
+		for (int i = 0; i < 3; i++) {
+			if(pf.getValue(3,i) == 0) {
+				myres=false;
+			}
+		}
+		if (myres) {
+			quality+=200;
+		}
+	}
+	
+	
 	private void checkRowMaxCorner() {
 		if (maxValue.getValue() >= 8) {
 			for (Tuple<Integer, Integer> position : maxValue.getPositions()) {
