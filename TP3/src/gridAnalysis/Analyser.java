@@ -46,7 +46,7 @@ public class Analyser {
 	}
 	
 	private void checkSum(){
-		
+		quality+=pf.getMaxWeightedSum();
 	}
 	
 	private void checkEmptyTiles(){
