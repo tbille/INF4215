@@ -30,7 +30,7 @@ public class Game2048TP {
 		directions.add("r");
 		ArrayList<Integer> resQualPrevision;
 		int nbWin=0;
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 10; i++) {
 
 
 			PlayingField pf = new PlayingField(4,4);
