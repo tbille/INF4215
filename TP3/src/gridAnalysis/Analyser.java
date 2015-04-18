@@ -7,7 +7,7 @@ import game.Tuple;
 public class Analyser {
 
 	private PlayingField pf;
-	private int quality = 100;
+	private int quality = 0;
 
 	private Case maxValue;
 
@@ -15,20 +15,17 @@ public class Analyser {
 	public Analyser(PlayingField _pf) {
 		pf = _pf;
 		maxValue = pf.maxValue();
+		quality+=maxValue.getValue();
+			checkMaxCorner(); 
+			checkLastLineFull();
+			lastLineSum();
+			checkToBeUsed();
+			checkEmptyTiles();
+			//lastColumnSum();
+			checkLastRow();
+			checkGameWon();
 
-		checkMaxCorner(); 
-		checkLastLineFull();
-		lastLineSum();
-		//checkLastColumnFull();
-		lastColumnSum();
-		checkToBeUsed();
-		checkEmptyTiles();
 		
-		checkGameWon();
-		/*checkTotalValue();
-		checkPosition();
-		checkLastRow();
-		checkRowMaxCorner();*/ 
 	}
 	
 	private void checkGameWon(){
@@ -36,18 +33,13 @@ public class Analyser {
 			quality+=10000;
 		}
 		else{
-			if(!pf.movesAvailable() && pf.isGameLost()){
+			/*if(pf.isGameLost()){
 				quality=0;
 			}
-			else{
-				quality+=150;
-			}
+			return false;*/
 		}
 	}
-	
-	private void checkSum(){
-		quality+=pf.getMaxWeightedSum();
-	}
+
 	
 	private void checkEmptyTiles(){
 		quality+=pf.getNumberOfFreeCells()*50;
@@ -86,9 +78,9 @@ public class Analyser {
 				test=false;
 			}
 		}
-		//if(test){
-		//	quality+=100;
-		//}
+		/*if(test){
+			quality+=100;
+		}*/
 		
 	}
 	
@@ -97,6 +89,7 @@ public class Analyser {
 	 */
 	private void lastColumnSum(){
 		int sumLast=0;
+		boolean testOk=true;
 		for (int i = 0; i < 4; i++) {
 			sumLast+=pf.getValue(i, 3);
 		}
@@ -107,9 +100,16 @@ public class Analyser {
 				sumLast+=pf.getValue(j, i);
 			}
 			
-			if(sumL>sumLast)
+			if(sumL>sumLast){
 				quality-=100;
+				testOk=false;
+			}
 		}
+		/*if (testOk) {
+			quality+=200;
+		}
+		*/
+		
 		
 	}
 	
@@ -117,30 +117,14 @@ public class Analyser {
 		if (maxValue.getValue() >= 8) {
 			for (Tuple<Integer, Integer> position : maxValue.getPositions()) {
 				//Tuple<Integer, Integer> BR = new Tuple<Integer, Integer>(3, 3);
-				if (position.x==3 && position.y==3) {
+				if (position.x.compareTo(new Integer(3))==0 && position.y.compareTo(new Integer(3))==0) {
 					quality += 500;
 				}
 			}
 		}
 	}
 
-	/**
-	 * Check the max value
-	 */
-	private void checkTotalValue(){
-		quality+=pf.getMaxWeightedSum();
-	}
 
-	/**
-	 * Check if the max value is in the bottom left cell
-	 */
-	private void checkPosition(){
-		for (Tuple<Integer, Integer> positions : maxValue.getPositions()) {
-			if (positions.x == 0 && positions.y == 3) {
-				quality += 100;
-			}
-		}
-	}
 
 	/**
 	 * Check if there is consecutive values in the last row
@@ -161,17 +145,6 @@ public class Analyser {
 			quality+=100;
 		}
 	}
-	
-	private void checkLastColumnFull(){
-		boolean myres=true;
-		for (int i = 0; i < 3; i++) {
-			if(pf.getValue(i,3) == 0)
-				myres=false;
-		}
-		if (myres) {
-			quality+=200;
-		}
-	} 
 
 	private void checkToBeUsed(){
 		for (int i = 0; i < 4; i++) {
@@ -244,4 +217,46 @@ public class Analyser {
 	public int getQuality() {
 		return quality;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private void checkSum(){
+		quality+=(int)pf.getMaxWeightedSum()/16;
+		quality+=(int)pf.sumAll()/16;
+	}
+	/**
+	 * Check the max value
+	 */
+	private void checkTotalValue(){
+		quality+=pf.getMaxWeightedSum();
+	}
+
+	/**
+	 * Check if the max value is in the bottom left cell
+	 */
+	private void checkPosition(){
+		for (Tuple<Integer, Integer> positions : maxValue.getPositions()) {
+			if (positions.x == 0 && positions.y == 3) {
+				quality += 100;
+			}
+		}
+	}
+	private void checkLastColumnFull(){
+		boolean myres=true;
+		for (int i = 0; i < 3; i++) {
+			if(pf.getValue(i,3) == 0)
+				myres=false;
+		}
+		if (myres) {
+			quality+=200;
+		}
+	} 
 }
