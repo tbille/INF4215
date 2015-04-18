@@ -60,7 +60,7 @@ public class Analyser {
 			for (Tuple<Integer, Integer> position : maxValue.getPositions()) {
 				Tuple<Integer, Integer> BR = new Tuple<Integer, Integer>(3, 3);
 				if (position == BR) {
-					quality += 250;
+					quality += 500;
 				}
 			}
 		}

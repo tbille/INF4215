@@ -83,13 +83,13 @@ public class Game2048TP {
 				}
 				System.out.println(str);
 				
-				/*
+				
 		        // Read the char
 				Scanner s = new Scanner(System.in);
 				String e = s.nextLine();
 				
 				
-				
+				/*
 				
 				
 				
