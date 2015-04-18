@@ -72,23 +72,11 @@ public class Analyser {
 	    return score_helper(board, score_table);
 	}
 	
-	public float score_tilechoose_node(EvalState _state, PlayingField _newPF, double cprob) {
-	    float res = 0;
-	    int num_open = 0;
-	    
-	    /*
-	    for(int i=0; i<16; i++) {
-	        if(((board >> (4*i)) & 0xf) == 0)
-	            num_open++;
-	    }*/
-
-	    cprob /=  _newPF.getNumberOfFreeCells();
-	    res += score_move_node(_state, board | (((board_t)1) << (4*i)), cprob * 0.9f) * 0.9f;
-
-	    return res / num_open;
+	private float score_tilechoose_node(EvalState _state, PlayingField _newPF, double cprob) {
+	    return score_move_node(_state, _newPF, cprob * 0.9) * 0.9;
 	}
 	
-	float score_move_node(EvalState state, PlayingField _newPF, float cprob) {
+	private float score_move_node(EvalState state, PlayingField _newPF, double cprob) {
 	    if(cprob < state.getCprob_thresh() || state.getCurdepth() > 5) {
 	        if(state.getCurdepth() > state.getMaxdepth())
 	            state.setMaxdepth(state.getCurdepth());
@@ -125,3 +113,4 @@ public class Analyser {
 
 	    return best;
 	}
+
