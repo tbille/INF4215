@@ -7,7 +7,7 @@ import game.Tuple;
 public class Analyser {
 
 	private PlayingField pf;
-	private int quality = 0;
+	private int quality = 100;
 
 	private Case maxValue;
 
@@ -15,32 +15,42 @@ public class Analyser {
 	public Analyser(PlayingField _pf) {
 		pf = _pf;
 		maxValue = pf.maxValue();
-			checkMaxCorner(); 
-			checkLastLineFull();
-			lastLineSum();
-			checkToBeUsed();
-			checkEmptyTiles();
-			lastColumnSum();
-			checkLastRow();
-			checkGameWon();
+
+		checkMaxCorner(); 
+		checkLastLineFull();
+		lastLineSum();
+		//checkLastColumnFull();
+		lastColumnSum();
+		checkToBeUsed();
+		checkEmptyTiles();
+		
+		checkGameWon();
+		/*checkTotalValue();
+		checkPosition();
+		checkLastRow();
+		checkRowMaxCorner();*/ 
 	}
-	
 	
 	private void checkGameWon(){
 		if(pf.isGameWon()){
 			quality+=10000;
 		}
 		else{
-			/*if(pf.isGameLost()){
+			if(!pf.movesAvailable() && pf.isGameLost()){
 				quality=0;
 			}
-			return false;*/
+			else{
+				quality+=150;
+			}
 		}
 	}
-
+	
+	private void checkSum(){
+		
+	}
 	
 	private void checkEmptyTiles(){
-		quality+=pf.getNumberOfFreeCells()*100;
+		quality+=pf.getNumberOfFreeCells()*50;
 	}
 	
 	private void checkLastLineFull(){
@@ -51,7 +61,7 @@ public class Analyser {
 			}
 		}
 		if (myres) {
-			quality+=1000;
+			quality+=200;
 		}
 	}
 	
@@ -76,9 +86,9 @@ public class Analyser {
 				test=false;
 			}
 		}
-		if(test){
-			quality+=500;
-		}
+		//if(test){
+		//	quality+=100;
+		//}
 		
 	}
 	
@@ -87,7 +97,6 @@ public class Analyser {
 	 */
 	private void lastColumnSum(){
 		int sumLast=0;
-		boolean testOk=true;
 		for (int i = 0; i < 4; i++) {
 			sumLast+=pf.getValue(i, 3);
 		}
@@ -98,16 +107,9 @@ public class Analyser {
 				sumLast+=pf.getValue(j, i);
 			}
 			
-			if(sumL>sumLast){
-				quality-=500;
-				testOk=false;
-			}
+			if(sumL>sumLast)
+				quality-=100;
 		}
-		if (testOk) {
-			quality+=500;
-		}
-		
-		
 		
 	}
 	
@@ -115,14 +117,30 @@ public class Analyser {
 		if (maxValue.getValue() >= 8) {
 			for (Tuple<Integer, Integer> position : maxValue.getPositions()) {
 				//Tuple<Integer, Integer> BR = new Tuple<Integer, Integer>(3, 3);
-				if (position.x.compareTo(new Integer(3))==0 && position.y.compareTo(new Integer(3))==0) {
-					quality += 5000;
+				if (position.x==3 && position.y==3) {
+					quality += 500;
 				}
 			}
 		}
 	}
 
+	/**
+	 * Check the max value
+	 */
+	private void checkTotalValue(){
+		quality+=pf.sumAll();
+	}
 
+	/**
+	 * Check if the max value is in the bottom left cell
+	 */
+	private void checkPosition(){
+		for (Tuple<Integer, Integer> positions : maxValue.getPositions()) {
+			if (positions.x == 0 && positions.y == 3) {
+				quality += 100;
+			}
+		}
+	}
 
 	/**
 	 * Check if there is consecutive values in the last row
@@ -140,9 +158,20 @@ public class Analyser {
 			}
 		}
 		if (myres) {
-			quality+=1000;
+			quality+=100;
 		}
 	}
+	
+	private void checkLastColumnFull(){
+		boolean myres=true;
+		for (int i = 0; i < 3; i++) {
+			if(pf.getValue(i,3) == 0)
+				myres=false;
+		}
+		if (myres) {
+			quality+=200;
+		}
+	} 
 
 	private void checkToBeUsed(){
 		for (int i = 0; i < 4; i++) {
@@ -151,6 +180,73 @@ public class Analyser {
 				quality = (checkNeighborHEquals(i,j)) ? quality+50 : quality;
 			}
 		}
+	}
+
+	/**
+	 *  Check values that cannot be used easily
+	 */
+	private void checkIsolated(){
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				quality = (checkNeighborV(i,j)) ? quality-20 : quality;
+				quality = (checkNeighborH(i,j)) ? quality-20 : quality;
+			}
+		}
+	}
+
+	private boolean checkNeighborV(int _x, int _y){
+		boolean res = false;
+		int value = pf.getValue(_x, _y);
+		
+		if (value>4) {
+			
+			// - Premiere Ligne
+			if (_x == 0) {
+				int valueUnder = pf.getValue(_x+1,_y);
+				res = (valueUnder < value/2) ? true : false;
+			}
+			// - Derniere Ligne
+			else if (_x == 3) {
+				int valueOver = pf.getValue(_x-1,_y);
+				res = (valueOver < value/2) ? true : false;
+
+			}
+			else {
+				int valueOver = pf.getValue(_x-1,_y);
+				int valueUnder = pf.getValue(_x+1,_y);
+
+				res = (valueOver < value/2) ? true : false;
+				res = (valueUnder < value/2) ? true : false;
+			}
+		}
+		return res;
+	}
+
+	private boolean checkNeighborH(int _x, int _y){
+		boolean res=false;
+		int value = pf.getValue(_x, _y);
+		
+		if (value>4) {
+			
+			// - Premiere Ligne
+			if (_y == 0) {
+				int valueUnder = pf.getValue(_x,_y+1);
+				res = (valueUnder < value/2) ? true : false;
+			}
+			// - Derniere Ligne
+			else if (_y == 3) {
+				int valueOver = pf.getValue(_x,_y-1);
+				res = (valueOver < value/2) ? true : false;
+			}
+			else {
+				int valueOver = pf.getValue(_x,_y-1);
+				int valueUnder = pf.getValue(_x,_y+1);
+
+				res = (valueOver < value/2) ? true : false;
+				res = (valueUnder < value/2) ? true : false;
+			}
+		}
+		return res;
 	}
 
 	private boolean checkNeighborVEquals(int _x, int _y){
@@ -215,4 +311,4 @@ public class Analyser {
 	public int getQuality() {
 		return quality;
 	}
-	
+}
