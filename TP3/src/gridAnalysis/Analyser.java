@@ -72,28 +72,17 @@ public class Analyser {
 	    return score_helper(board, score_table);
 	}
 	
-	public float score_tilechoose_node(EvalState _state, PlayingField _newPF, double cprob) {
+	private float score_tilechoose_node(EvalState _state, PlayingField _newPF, double cprob) {
 	    float res = 0;
 	    int num_open = 0;
-	    
-	    /*
-	    for(int i=0; i<16; i++) {
-	        if(((board >> (4*i)) & 0xf) == 0)
-	            num_open++;
-	    }*/
 
 	    cprob /=  _newPF.getNumberOfFreeCells();
 
-	    for(int i=0; i<16; i++) {
-	        if(((board >> (4*i)) & 0xf) == 0) {
-	            res += score_move_node(_state, board | (((board_t)1) << (4*i)), cprob * 0.9f) * 0.9f;
-	        }
-	    }
-
-	    return res / num_open;
+	    return score_move_node(_state, _newPF, cprob * 0.9f) * 0.9f;
+	        
 	}
 	
-	float score_move_node(EvalState state, PlayingField _newPF, float cprob) {
+	private float score_move_node(EvalState state, PlayingField _newPF, double cprob) {
 	    if(cprob < state.getCprob_thresh() || state.getCurdepth() > 5) {
 	        if(state.getCurdepth() > state.getMaxdepth())
 	            state.setMaxdepth(state.getCurdepth());
@@ -129,24 +118,4 @@ public class Analyser {
 	    }
 
 	    return best;
-	}
-	
-	float score_toplevel_move(board_t board, int move) {
-	    float res;
-	    struct timeval start, finish;
-	    double elapsed;
-	    eval_state state;
-	    state.depth_limit = std::max(3, count_distinct_tiles(board) - 2);
-
-	    gettimeofday(&start, NULL);
-	    res = _score_toplevel_move(state, board, move);
-	    gettimeofday(&finish, NULL);
-
-	    elapsed = (finish.tv_sec - start.tv_sec);
-	    elapsed += (finish.tv_usec - start.tv_usec) / 1000000.0;
-
-	    printf("Move %d: result %f: eval'd %ld moves (%d cache hits, %d cache size) in %.2f seconds (maxdepth=%d)\n", move, res,
-	        state.moves_evaled, state.cachehits, (int)state.trans_table.size(), elapsed, state.maxdepth);
-
-	    return res;
 	}
