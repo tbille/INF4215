@@ -85,13 +85,9 @@ public class Game2048TP {
 				
 				
 		        // Read the char
-				Scanner s = new Scanner(System.in);
+				/*Scanner s = new Scanner(System.in);
 				String e = s.nextLine();
-				/*
-				
-				
-				
-				
+					
 				
 				
 				if(firstAnalyser.getQuality()>previousQuality){
