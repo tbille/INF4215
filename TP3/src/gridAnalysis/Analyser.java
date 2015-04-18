@@ -15,7 +15,6 @@ public class Analyser {
 	public Analyser(PlayingField _pf) {
 		pf = _pf;
 		maxValue = pf.maxValue();
-		//quality+=maxValue.getValue();
 			checkMaxCorner(); 
 			checkLastLineFull();
 			lastLineSum();
@@ -23,10 +22,7 @@ public class Analyser {
 			checkEmptyTiles();
 			lastColumnSum();
 			checkLastRow();
-			//checkTotalValue();
 			checkGameWon();
-
-		
 	}
 	
 	
@@ -220,45 +216,3 @@ public class Analyser {
 		return quality;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	private void checkSum(){
-		quality+=(int)pf.getMaxWeightedSum()/16;
-		quality+=(int)pf.sumAll()/16;
-	}
-	/**
-	 * Check the max value
-	 */
-	private void checkTotalValue(){
-		quality+=pf.getMaxWeightedSum();
-	}
-
-	/**
-	 * Check if the max value is in the bottom left cell
-	 */
-	private void checkPosition(){
-		for (Tuple<Integer, Integer> positions : maxValue.getPositions()) {
-			if (positions.x == 0 && positions.y == 3) {
-				quality += 100;
-			}
-		}
-	}
-	private void checkLastColumnFull(){
-		boolean myres=true;
-		for (int i = 0; i < 3; i++) {
-			if(pf.getValue(i,3) == 0)
-				myres=false;
-		}
-		if (myres) {
-			quality+=200;
-		}
-	} 
-}
