@@ -29,6 +29,10 @@ public class Analyser {
 		checkRowMaxCorner();*/ 
 	}
 	
+	private void checkSum(){
+		
+	}
+	
 	private void checkEmptyTiles(){
 		quality+=pf.getNumberOfFreeCells()*50;
 	}
@@ -50,6 +54,7 @@ public class Analyser {
 	 */
 	private void lastLineSum(){
 		int sumLast=0;
+		boolean test=true;
 		for (int i = 0; i < 4; i++) {
 			sumLast+=pf.getValue(3, i);
 		}
@@ -60,8 +65,13 @@ public class Analyser {
 				sumLast+=pf.getValue(i, j);
 			}
 			
-			if(sumL>sumLast)
+			if(sumL>sumLast){
 				quality-=100;
+				test=false;
+			}
+		}
+		if(test){
+			quality+=100;
 		}
 		
 	}
@@ -105,7 +115,7 @@ public class Analyser {
 		quality+=pf.sumAll();
 	}
 
-	/*
+	/**
 	 * Check if the max value is in the bottom left cell
 	 */
 	private void checkPosition(){
@@ -116,7 +126,7 @@ public class Analyser {
 		}
 	}
 
-	/*
+	/**
 	 * Check if there is consecutive values in the last row
 	 */
 	private void checkLastRow(){
