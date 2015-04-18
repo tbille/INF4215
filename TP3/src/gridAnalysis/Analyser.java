@@ -22,6 +22,7 @@ public class Analyser {
 		checkLastColumnFull();
 		lastColumnSum();
 		checkToBeUsed();
+		checkEmptyTiles();
 		/*checkTotalValue();
 		checkPosition();
 		checkLastRow();
@@ -29,7 +30,7 @@ public class Analyser {
 	}
 	
 	private void checkEmptyTiles(){
-		quality=pf.getFreeCells().size()*50;
+		quality+=pf.getNumberOfFreeCells()*50;
 	}
 	
 	private void checkLastLineFull(){
