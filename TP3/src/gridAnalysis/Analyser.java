@@ -19,6 +19,8 @@ public class Analyser {
 		checkMaxCorner(); 
 		checkLastLineFull();
 		lastLineSum();
+		checkLastColumnFull();
+		lastColumnSum();
 		
 	/*	checkTotalValue();
 		checkPosition();
@@ -38,6 +40,9 @@ public class Analyser {
 		}
 	}
 	
+	/**
+	 * Compare last row sum to other rows sum and update quality
+	 */
 	private void lastLineSum(){
 		int sumLast=0;
 		for (int i = 0; i < 4; i++) {
@@ -55,6 +60,28 @@ public class Analyser {
 		}
 		
 	}
+	
+	/**
+	 * Compare last columns sum to other column sum and update quality
+	 */
+	private void lastColumnSum(){
+		int sumLast=0;
+		for (int i = 0; i < 4; i++) {
+			sumLast+=pf.getValue(i, 3);
+		}
+		int sumL;
+		for (int i = 0; i < 3; i++) {
+			sumL=0;
+			for (int j = 0; j < 4; j++) {
+				sumLast+=pf.getValue(j, i);
+			}
+			
+			if(sumL>sumLast)
+				quality-=100;
+		}
+		
+	}
+	
 	private void checkMaxCorner() {
 		if (maxValue.getValue() >= 8) {
 			for (Tuple<Integer, Integer> position : maxValue.getPositions()) {
