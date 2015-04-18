@@ -72,7 +72,7 @@ public class Game2048TP {
 				Integer max=0;
 				str="";
 				for (Integer integer : resQualPrevision) {
-			//		System.out.println(integer);
+					System.out.println(directions.get(k) +" : "+ integer);
 					
 					if(max<=integer){
 						max=integer;
