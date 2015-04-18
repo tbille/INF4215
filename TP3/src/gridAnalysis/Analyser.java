@@ -1,116 +1,215 @@
 package gridAnalysis;
 
-import java.util.ArrayList;
-
 import game.Case;
 import game.PlayingField;
 import game.Tuple;
 
 public class Analyser {
 
-	private double  CPROB_THRESH_BASE = 0.001f;
-	private int CACHE_DEPTH_LIMIT = 4;
-		
 	private PlayingField pf;
 	private int quality = 100;
 
-	private int bestMove;
-	
 	private Case maxValue;
+
 
 	public Analyser(PlayingField _pf) {
 		pf = _pf;
 		maxValue = pf.maxValue();
-		bestMove=-1;
-	}
-	
 
-	public int findBestMove(){
-		int move;
-		float best=0;
+		checkTotalValue();
+		checkPosition();
+		checkLastRow();
+		checkRowMaxCorner();
+	}
+
+	private void checkRowMaxCorner() {
+		if (maxValue.getValue() >= 8) {
+			for (Tuple<Integer, Integer> position : maxValue.getPositions()) {
+				Tuple<Integer, Integer> TL = new Tuple<Integer, Integer>(0, 0);
+				Tuple<Integer, Integer> BR = new Tuple<Integer, Integer>(3, 3);
+				Tuple<Integer, Integer> TR = new Tuple<Integer, Integer>(0, 3);
+				Tuple<Integer, Integer> BL = new Tuple<Integer, Integer>(3, 0);
+				if (position == TL || position == BL || position == TR || position == BR) {
+					quality += 250;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Check the max value
+	 */
+	private void checkTotalValue(){
+		quality+=pf.sumAll();
+	}
+
+	/*
+	 * Check if the max value is in the bottom left cell
+	 */
+	private void checkPosition(){
+		for (Tuple<Integer, Integer> positions : maxValue.getPositions()) {
+			if (positions.x == 0 && positions.y == 3) {
+				quality += 100;
+			}
+		}
+	}
+
+	/*
+	 * Check if there is consecutive values in the last row
+	 */
+	private void checkLastRow(){
+		boolean myres=true;
+		for (int i = 0; i < 3; i++) {
+			if(pf.getValue(3,i) == 0) {
+				if ( pf.getValue(3,i) == pf.getValue(3,i+1)*2 || pf.getValue(3,i) == pf.getValue(3,i+1)) {
+					quality += 25*(4-i);
+					myres=myres&&true;
+				}
+				else
+					myres=myres&&false;
+			}
+		}
+		if (myres) {
+			quality+=100;
+		}
+	} 
+
+	private void checkToBeUsed(){
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				quality = (checkNeighborVEquals(i,j)) ? quality+50 : quality;
+				quality = (checkNeighborHEquals(i,j)) ? quality+50 : quality;
+			}
+		}
+	}
+
+	/**
+	 *  Check values that cannot be used easily
+	 */
+	private void checkIsolated(){
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				quality = (checkNeighborV(i,j)) ? quality-20 : quality;
+				quality = (checkNeighborH(i,j)) ? quality-20 : quality;
+			}
+		}
+	}
+
+	private boolean checkNeighborV(int _x, int _y){
+		boolean res = false;
+		int value = pf.getValue(_x, _y);
 		
-		ArrayList<PlayingField> pfNext = pf.getAllNextPossiblePlayingFieldsPF();
-	    for(move=0; move<4; move++) {
-	        float res = score_toplevel_move(pfNext.get(move),move);
-	        if(res > best) {
-	            best = res;
-	            bestMove = move;
-	        }
-	    }
-	    return bestMove;
+		if (value>4) {
+			
+			// - Premiere Ligne
+			if (_x == 0) {
+				int valueUnder = pf.getValue(_x+1,_y);
+				res = (valueUnder < value/2) ? true : false;
+			}
+			// - Derniere Ligne
+			else if (_x == 3) {
+				int valueOver = pf.getValue(_x-1,_y);
+				res = (valueOver < value/2) ? true : false;
+
+			}
+			else {
+				int valueOver = pf.getValue(_x-1,_y);
+				int valueUnder = pf.getValue(_x+1,_y);
+
+				res = (valueOver < value/2) ? true : false;
+				res = (valueUnder < value/2) ? true : false;
+			}
+		}
+		return res;
 	}
 
-	private float score_toplevel_move(PlayingField _pf, int move) {
-	    float res;
-	    EvalState state = new EvalState();
-	
-	    if(pf.equals(_pf))
-	        res=0;
-	    else{
-	    	state.setCprob_thresh(CPROB_THRESH_BASE);
-	    	res=score_tilechoose_node(state, _pf, 1.0);
-	    }
+	private boolean checkNeighborH(int _x, int _y){
+		boolean res=false;
+		int value = pf.getValue(_x, _y);
+		
+		if (value>4) {
+			
+			// - Premiere Ligne
+			if (_y == 0) {
+				int valueUnder = pf.getValue(_x,_y+1);
+				res = (valueUnder < value/2) ? true : false;
+			}
+			// - Derniere Ligne
+			else if (_y == 3) {
+				int valueOver = pf.getValue(_x,_y-1);
+				res = (valueOver < value/2) ? true : false;
+			}
+			else {
+				int valueOver = pf.getValue(_x,_y-1);
+				int valueUnder = pf.getValue(_x,_y+1);
 
-	    return res;
+				res = (valueOver < value/2) ? true : false;
+				res = (valueUnder < value/2) ? true : false;
+			}
+		}
+		return res;
 	}
-	
+
+	private boolean checkNeighborVEquals(int _x, int _y){
+		boolean res = false;
+		int value = pf.getValue(_x, _y);
+		
+		if (value>4) {
+			
+			// - Premiere Ligne
+			if (_x == 0) {
+				int valueUnder = pf.getValue(_x+1,_y);
+				res = (valueUnder == value) ? true : false;
+			}
+			// - Derniere Ligne
+			else if (_x == 3) {
+				int valueOver = pf.getValue(_x-1,_y);
+				res = (valueOver == value) ? true : false;
+
+			}
+			else {
+				int valueOver = pf.getValue(_x-1,_y);
+				int valueUnder = pf.getValue(_x+1,_y);
+
+				res = (valueOver == value) ? true : false;
+				res = (valueUnder == value) ? true : false;
+			}
+		}
+		return res;
+	}
+
+	private boolean checkNeighborHEquals(int _x, int _y){
+		boolean res=false;
+		int value = pf.getValue(_x, _y);
+		
+		if (value>4) {
+			
+			// - Premiere Ligne
+			if (_y == 0) {
+				int valueUnder = pf.getValue(_x,_y+1);
+				res = (valueUnder == value) ? true : false;
+			}
+			// - Derniere Ligne
+			else if (_y == 3) {
+				int valueOver = pf.getValue(_x,_y-1);
+				res = (valueOver == value) ? true : false;
+			}
+			else {
+				int valueOver = pf.getValue(_x,_y-1);
+				int valueUnder = pf.getValue(_x,_y+1);
+
+				res = (valueOver == value) ? true : false;
+				res = (valueUnder == value) ? true : false;
+			}
+		}
+		return res;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int getQuality() {
+		return quality;
+	}
 }
-	
-	public float score_helper(board_t board, const float* table) {
-	    return table[(board >>  0) & ROW_MASK] +
-	           table[(board >> 16) & ROW_MASK] +
-	           table[(board >> 32) & ROW_MASK] +
-	           table[(board >> 48) & ROW_MASK];
-	}
-
-	public float score_heur_board(PlayingField _pf) {
-	    return score_helper(          board , heur_score_table) +
-	           score_helper(transpose(board), heur_score_table);
-	}
-
-	public float score_board(board_t board) {
-	    return score_helper(board, score_table);
-	}
-	
-	private float score_tilechoose_node(EvalState _state, PlayingField _newPF, double cprob) {
-	    return score_move_node(_state, _newPF, cprob * 0.9) * 0.9;
-	}
-	
-	private float score_move_node(EvalState state, PlayingField _newPF, double cprob) {
-	    if(cprob < state.getCprob_thresh() || state.getCurdepth() > 5) {
-	        if(state.getCurdepth() > state.getMaxdepth())
-	            state.setMaxdepth(state.getCurdepth());
-	        return score_heur_board(pf);
-	    }
-
-	    if(state.getCurdepth() < CACHE_DEPTH_LIMIT) {
-	        const auto &i = state.trans_table.find(board);
-	        if(i != state.trans_table.end()) {
-	            state.setCachehits(state.getCachehits() + 1);
-	            return i->second;
-	        }
-	    }
-
-	    int move;
-	    float best = 0;
-
-	    state.setCurdepth(state.getCurdepth() + 1);
-	    for(move=0; move<4; move++) {
-	        board_t newboard = execute_move(move, board);
-	        state.setMoves_evaled(state.getMoves_evaled() + 1);
-	        if(board == newboard)
-	            continue;
-
-	        float res = score_tilechoose_node(state, newboard, cprob);
-	        if(res > best)
-	            best = res;
-	    }
-	    state.setCurdepth(state.getCurdepth() - 1);
-
-	    if(state.getCurdepth() < CACHE_DEPTH_LIMIT) {
-	        state.trans_table[board] = best;
-	    }
-
-	    return best;
-	}
-

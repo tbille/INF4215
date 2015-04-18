@@ -188,7 +188,7 @@ public class PlayingField {
 		return this.cellsAvailable() || this.tileMatchesAvailable();
 	}
 	
-	public boolean equals(PlayingField _pf){
+	public boolean equal(PlayingField _pf){
 		for (int i = 0; i < cells.length; i++) {
 			for (int j = 0; j < cells[0].length; j++) {
 				if(cells[i][j]!=_pf.getValue(i, j))
@@ -852,19 +852,6 @@ public class PlayingField {
 		}
 		
 		return max;
-	}
-	
-	public int nbCaseDistinctes(){
-		ArrayList<Integer> cases=new ArrayList<>();
-		
-		for (int i = 0; i < cells.length; i++) {
-			for (int j = 0; j < cells[0].length; j++) {
-				if(cells[i][j]!=0 && !cases.contains(cells[i][j])){
-					cases.add(cells[i][j]);
-				}
-			}
-		}
-		return cases.size();
 	}
 	
 }

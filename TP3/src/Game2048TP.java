@@ -30,7 +30,7 @@ public class Game2048TP {
 		directions.add("r");
 		ArrayList<Integer> resQualPrevision;
 		
-		//for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 10; i++) {
 
 
 			PlayingField pf = new PlayingField(4,4);
@@ -61,7 +61,7 @@ public class Game2048TP {
 			        if(movedPrevision>0) pf_tmp.insertRandCell();
 				
 			        anal_tmp = new Analyser(pf_tmp);
-			        if(!pf.equals(pf_tmp))
+			        if(!pf.equal(pf_tmp))
 			        	resQualPrevision.add(anal_tmp.getQuality());
 			        else{
 			        	resQualPrevision.add(0);
@@ -204,10 +204,10 @@ public class Game2048TP {
 		        System.out.println(pf);
 			}
 			if(pf.isGameWon())
-				won=42;
+				won=i;
 
 			System.out.println(pf);
-		//}
+		}
 		System.out.println(won);
 	}
 
