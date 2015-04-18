@@ -39,6 +39,9 @@ public class Analyser {
 			if(!pf.movesAvailable()){
 				quality=0;
 			}
+			else{
+				quality+=100;
+			}
 		}
 	}
 	

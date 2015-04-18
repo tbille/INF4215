@@ -46,8 +46,8 @@ public class Game2048TP {
 			while(pf.movesAvailable()){
 				firstAnalyser = new Analyser(pf);
 
-				res=Math.random()*100;
-				System.out.println(res);
+				/*res=Math.random()*100;
+				System.out.println(res);*/
 
 				
 				/*
@@ -65,7 +65,6 @@ public class Game2048TP {
 			        	resQualPrevision.add(anal_tmp.getQuality());
 			        else{
 			        	resQualPrevision.add(0);
-			//        	System.out.println("yoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
 			        }
 				}
 				
@@ -188,18 +187,19 @@ public class Game2048TP {
 				
 				int moved = pf.moveByString(str);
 		        if(moved>0) pf.insertRandCell();
-		        System.out.println("-------------------------");
+		      /*  System.out.println("-------------------------");
 		        System.out.println(pf.maxValue().getValue());
 		        for (game.Tuple<Integer,Integer> resr : pf.maxValue().getPositions()) {
 		        	System.out.println(resr.x);
 		        	System.out.println(resr.y);
 
-				}
+				}*/
 
 		        // Sauvegarde de l'état
 		        previousMove=str;
 		        previousQuality=firstAnalyser.getQuality();
 		       // System.out.println("This is my quality " +firstAnalyser.getQuality());
+		        System.out.println("Grille Actuelle");
 		        System.out.println(pf);
 			}
 			if(pf.isGameWon()){
