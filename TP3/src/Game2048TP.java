@@ -82,6 +82,10 @@ public class Game2048TP {
 				}
 				System.out.println(str);
 				
+				if(max==0){
+					str=directions.get(0 + (int)(Math.random() * ((3 - 0) + 1)));
+					
+				}
 				
 		        // Read the char
 				/*Scanner s = new Scanner(System.in);
