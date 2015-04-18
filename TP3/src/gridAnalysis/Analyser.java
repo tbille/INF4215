@@ -21,11 +21,15 @@ public class Analyser {
 		lastLineSum();
 		checkLastColumnFull();
 		lastColumnSum();
-		
+		checkToBeUsed();
 		/*checkTotalValue();
 		checkPosition();
 		checkLastRow();
 		checkRowMaxCorner();*/ 
+	}
+	
+	private void checkEmptyTiles(){
+		quality=pf.getFreeCells().size()*50;
 	}
 	
 	private void checkLastLineFull(){
@@ -143,8 +147,8 @@ public class Analyser {
 	} 
 
 	private void checkToBeUsed(){
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
 				quality = (checkNeighborVEquals(i,j)) ? quality+50 : quality;
 				quality = (checkNeighborHEquals(i,j)) ? quality+50 : quality;
 			}
